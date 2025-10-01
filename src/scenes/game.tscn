@@ -19,10 +19,6 @@ tile_set = ExtResource("3_5aext")
 navigation_enabled = false
 
 [node name="Player" parent="Level" instance=ExtResource("4_eow3j")]
-floor_max_angle = 1.0471976
-maxSpeed = 400.0
-jumpHeight = 3.0
-gravityScale = 40.0
 
 [node name="Camera2D" type="Camera2D" parent="Level/Player"]
 position_smoothing_enabled = true
