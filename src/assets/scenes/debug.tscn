@@ -1,0 +1,145 @@
+[gd_scene load_steps=2 format=3 uid="uid://bqod7lohmpvix"]
+
+[ext_resource type="Script" uid="uid://bhj0er4cx02kc" path="res://assets/scripts/debug.gd" id="1_1uwqr"]
+
+[node name="Debug" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1uwqr")
+
+[node name="DEBUG" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1566.9999
+offset_top = 15.999999
+offset_right = 1729.9999
+offset_bottom = 39.00006
+scale = Vector2(2.0656164, 2.0656164)
+text = "DEBUG"
+horizontal_alignment = 2
+
+[node name="Frame" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect2" type="ColorRect" parent="Frame"]
+layout_mode = 0
+offset_right = 10.0
+offset_bottom = 100.0
+
+[node name="ColorRect3" type="ColorRect" parent="Frame"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 10.0
+
+[node name="ColorRect4" type="ColorRect" parent="Frame"]
+layout_mode = 0
+offset_top = 1078.0
+offset_right = 10.000004
+offset_bottom = 1178.0
+rotation = -1.5707964
+
+[node name="ColorRect5" type="ColorRect" parent="Frame"]
+layout_mode = 0
+offset_top = 1078.0
+offset_right = 100.0
+offset_bottom = 1088.0
+rotation = -1.5707964
+
+[node name="ColorRect6" type="ColorRect" parent="Frame"]
+layout_mode = 0
+offset_left = 1920.0
+offset_top = 1080.0
+offset_right = 1930.0
+offset_bottom = 1180.0
+rotation = -3.1415927
+
+[node name="ColorRect7" type="ColorRect" parent="Frame"]
+layout_mode = 0
+offset_left = 1920.0
+offset_top = 1080.0
+offset_right = 2020.0
+offset_bottom = 1090.0
+rotation = -3.1415927
+
+[node name="ColorRect8" type="ColorRect" parent="Frame"]
+layout_mode = 0
+offset_left = 1920.0
+offset_right = 1930.0
+offset_bottom = 100.0
+rotation = -4.712389
+
+[node name="ColorRect9" type="ColorRect" parent="Frame"]
+layout_mode = 0
+offset_left = 1920.0
+offset_right = 2020.0
+offset_bottom = 10.0
+rotation = -4.712389
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(1, 0.7058824, 1, 0.5294118)
+
+[node name="WorldSpeedLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 23.999992
+offset_top = 1007.99994
+offset_right = 187.0
+offset_bottom = 1031.0
+scale = Vector2(2.0656164, 2.0656164)
+text = "WORLD SPEED = xy"
+
+[node name="AnimationLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1232.0
+offset_top = 1007.99994
+offset_right = 1548.0
+offset_bottom = 1031.0
+scale = Vector2(2.0656164, 2.0656164)
+text = "currently playing \"movement\" animation"
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 15.999996
+offset_top = 16.0
+offset_right = 108.95053
+offset_bottom = 39.00006
+scale = Vector2(2.0656164, 2.0656164)
+text = "SCORE = 0"
+
+[node name="HighscoreLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 239.99994
+offset_top = 15.999985
+offset_right = 371.67975
+offset_bottom = 39.000046
+scale = Vector2(2.0656164, 2.0656164)
+text = "HIGHSCORE = 0"
+
+[node name="IncreaseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 352.0
+offset_top = 1000.0
+offset_right = 436.0
+offset_bottom = 1031.0
+scale = Vector2(2.0656164, 2.0656164)
+text = "INCREASE"
+
+[node name="DecreaseButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 1000.0
+offset_right = 623.0
+offset_bottom = 1031.0
+scale = Vector2(2.0714347, 2.0788565)
+text = "DECREASE"
+
+[connection signal="pressed" from="IncreaseButton" to="." method="_on_increase_button_pressed"]
+[connection signal="pressed" from="DecreaseButton" to="." method="_on_decrease_button_pressed"]

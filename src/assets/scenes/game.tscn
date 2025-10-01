@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://42an1dcwl74y"]
+
+[ext_resource type="Script" uid="uid://o8kqqd2p4eu5" path="res://assets/scripts/game.gd" id="1_7jktm"]
+[ext_resource type="PackedScene" uid="uid://bqod7lohmpvix" path="res://assets/scenes/debug.tscn" id="1_fc0e3"]
+[ext_resource type="PackedScene" uid="uid://crrmsn1syrux2" path="res://assets/scenes/death_screen.tscn" id="2_7jktm"]
+[ext_resource type="PackedScene" uid="uid://b7rryvumifoxi" path="res://assets/scenes/level.tscn" id="3_ryrav"]
+[ext_resource type="PackedScene" uid="uid://78b2glth7glk" path="res://assets/scenes/player.tscn" id="4_eow3j"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_7jktm")
+
+[node name="Level" parent="." instance=ExtResource("3_ryrav")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(1.5258789e-05, 6.1035156e-05)
+scale = Vector2(9.999999, 9.999999)
+anchor_mode = 0
+
+[node name="DeathScreen" parent="Camera2D" instance=ExtResource("2_7jktm")]
+visible = false
+offset_left = 96.1
+offset_top = 50.099995
+offset_right = 96.1
+offset_bottom = 50.099995
+scale = Vector2(0.1, 0.1)
+
+[node name="Debug" parent="Camera2D" instance=ExtResource("1_fc0e3")]
+visible = false
+scale = Vector2(0.1, 0.1)
+
+[node name="Player" parent="." instance=ExtResource("4_eow3j")]
+position = Vector2(200, 700)
