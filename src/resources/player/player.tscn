@@ -8,9 +8,13 @@ radius = 20.0
 height = 95.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
+floor_max_angle = 1.0471976
 script = ExtResource("1_rwm0n")
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
+maxSpeed = 400.0
+jumpHeight = 3.0
+gravityScale = 40.0
 run = true
 jump = true
 idle = true
