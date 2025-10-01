@@ -4,7 +4,8 @@
 [ext_resource type="SpriteFrames" uid="uid://brafpis3h2qfy" path="res://assets/resources/player/player_sprite_frames.tres" id="2_y8vdq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
-height = 45.999996
+radius = 20.0
+height = 95.0
 
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
 script = ExtResource("1_rwm0n")
@@ -19,6 +20,7 @@ walk = true
 shape = SubResource("CapsuleShape2D_sh265")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5.6000004)
+position = Vector2(0, -12)
+scale = Vector2(2, 2)
 sprite_frames = ExtResource("2_y8vdq")
 animation = &"idle"
