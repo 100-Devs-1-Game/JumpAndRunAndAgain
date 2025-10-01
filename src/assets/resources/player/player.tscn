@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://78b2glth7glk"]
+
+[ext_resource type="Script" uid="uid://bjnj3gv7242nd" path="res://assets/scripts/UltimatePlatformerController.gd" id="1_rwm0n"]
+[ext_resource type="SpriteFrames" uid="uid://brafpis3h2qfy" path="res://assets/resources/player/player_sprite_frames.tres" id="2_y8vdq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
+height = 45.999996
+
+[node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("PlayerSprite", "PlayerCollider")]
+script = ExtResource("1_rwm0n")
+PlayerSprite = NodePath("AnimatedSprite2D")
+PlayerCollider = NodePath("CollisionShape2D")
+run = true
+jump = true
+idle = true
+walk = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_sh265")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -5.6000004)
+sprite_frames = ExtResource("2_y8vdq")
+animation = &"idle"

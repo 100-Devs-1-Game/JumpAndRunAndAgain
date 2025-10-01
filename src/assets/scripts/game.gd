@@ -2,12 +2,12 @@ extends Node
 
 ### GLOBAL VARIABLES
 # SCORES
-var score
-var highscore
+var score: int
+var highscore: int
 
 # WORLD/CONTROL PROPERTIES
-var worldspeed
-var speedmodifier
+var worldspeed: float = 1.0
+var speedmodifier: float = 0.1
 
 # DEBUG ANIMATION DETECTION
 var currentanim
