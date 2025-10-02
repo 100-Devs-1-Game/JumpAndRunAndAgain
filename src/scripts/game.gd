@@ -1,5 +1,7 @@
 extends Node
 
+@onready var player: Player = $Player
+
 ### GLOBAL VARIABLES
 # SCORES
 var score: int
@@ -8,9 +10,6 @@ var highscore: int
 # WORLD/CONTROL PROPERTIES
 var worldspeed: float = 1.0
 var speedmodifier: float = 0.1
-
-# DEBUG ANIMATION DETECTION
-var currentanim
 
 
 ### GAME FUNCTIONS
@@ -28,28 +27,28 @@ func death():
 func start():
 	# set player position to starting location
 	# reset variable values
-	null
+	pass
 
 # NOTE: INCREASE WORLD SPEED ON COMPLETION OF LOOP
 # TODO: WRITE
 func loop():
-	null
+	pass
 
 
 # NOTE: UPDATES EVERY SECOND(?)
-func _process(delta):
+func _process(_delta: float):
 	
 	### CONTROL SYSTEMS
 	## CAMERA
 	
 	# NOTE: HAVE CAMERA FOLLOW PLAYER BUT NOT CENTRED UNTIL A CERTAIN DISTANCE FROM STARTING WALL
 	# TODO: WRITE
-	null
+	
 	
 	# NOTE: CHANGES DEBUG VISIBILITY
 	if Input.is_action_just_pressed("DebugPreview"):
 		print("0 pressed")
-		if $Camera2D/Debug.visible == false:
-			$Camera2D/Debug.visible = true
+		if player.visible == false:
+			player.visible = true
 			print("debug visible")
-		else: $Camera2D/Debug.visible = false
+		else: player.visible = false
