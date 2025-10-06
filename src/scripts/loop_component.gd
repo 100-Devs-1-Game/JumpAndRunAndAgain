@@ -92,3 +92,7 @@ func connect_signals(instance: Node2D):
 		orig_node2d.visibility_changed.connect(func():
 			clone_node2d.visible= orig_node2d.visible)
 			
+		if orig_node2d is AnimatedSprite2D:
+			(orig_node2d as AnimatedSprite2D).animation_changed.connect(func():
+				(clone_node2d as AnimatedSprite2D).play((orig_node2d as AnimatedSprite2D).animation))
+		
