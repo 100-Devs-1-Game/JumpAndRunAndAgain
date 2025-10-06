@@ -21,9 +21,3 @@ player = NodePath("../Player")
 game = NodePath("../..")
 
 [node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("5_iywne")]
-visible = false
-offset_left = 96.1
-offset_top = 50.099995
-offset_right = 96.099976
-offset_bottom = 50.099976
-scale = Vector2(0.1, 0.1)
