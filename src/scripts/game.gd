@@ -20,8 +20,9 @@ var speedmodifier: float = 0.1
 # TODO: FINISH IMPLEMENTING DEATH SPRITE (TBM)
 func death():
 	# stop player movement and display death sprite
-	$Camera2D/DeathScreen.visible = true
-	# death screen retry and credits still to be implemented
+	$"CanvasLayer/DeathScreen/Menu&title/ScoreText".text = "...BUT YOU COLLECTED " + str(score) + " CARROTS BEFORE YOU DID. TRY AGAIN?"
+	$CanvasLayer/DeathScreen.visible = true
+	# DEATH SCREEN MENU AND BUTTON IMPUTS (SANS RETRY) IMPLEMENTED
 
 # NOTE: RESTART PLAYER FROM DEFINED POSITION AND RESET WORLD PROPERTIES & SCORE TO DEFAULT VALUES
 # TODO: WRITE

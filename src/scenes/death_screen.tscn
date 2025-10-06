@@ -1,11 +1,15 @@
-[gd_scene load_steps=9 format=3 uid="uid://crrmsn1syrux2"]
+[gd_scene load_steps=14 format=3 uid="uid://crrmsn1syrux2"]
 
 [ext_resource type="Texture2D" uid="uid://baqrxhadp3hxi" path="res://assets/placeholder art/proxyretry.png" id="1_pd44o"]
-[ext_resource type="Texture2D" uid="uid://drlw07pc0tb4x" path="res://assets/art/title frames/title1.png" id="1_wfw3d"]
-[ext_resource type="Texture2D" uid="uid://b8x3hotlgjkv7" path="res://assets/art/title frames/title2.png" id="2_wtkkp"]
-[ext_resource type="Texture2D" uid="uid://ctyr40ii716ji" path="res://assets/art/title frames/title3.png" id="3_wraau"]
-[ext_resource type="Texture2D" uid="uid://cj855lyrkgra3" path="res://assets/art/title frames/title4.png" id="4_vyrcq"]
-[ext_resource type="Texture2D" uid="uid://b5h0hl252ynff" path="res://assets/art/title frames/title5.png" id="5_vcvlw"]
+[ext_resource type="Script" uid="uid://cke7rm1pytcnu" path="res://scenes/menu.gd" id="1_vcvlw"]
+[ext_resource type="Texture2D" uid="uid://drlw07pc0tb4x" path="res://assets/art/ui elements/title1.png" id="1_wfw3d"]
+[ext_resource type="Texture2D" uid="uid://b8x3hotlgjkv7" path="res://assets/art/ui elements/title2.png" id="2_wtkkp"]
+[ext_resource type="Texture2D" uid="uid://ctyr40ii716ji" path="res://assets/art/ui elements/title3.png" id="3_wraau"]
+[ext_resource type="Texture2D" uid="uid://cj855lyrkgra3" path="res://assets/art/ui elements/title4.png" id="4_vyrcq"]
+[ext_resource type="Texture2D" uid="uid://b5h0hl252ynff" path="res://assets/art/ui elements/title5.png" id="5_vcvlw"]
+[ext_resource type="Texture2D" uid="uid://epxmlk88jri0" path="res://assets/art/ui elements/x1.png" id="7_vyrcq"]
+[ext_resource type="Texture2D" uid="uid://blx3a32ks7kt2" path="res://assets/art/ui elements/x2.png" id="8_vcvlw"]
+[ext_resource type="Texture2D" uid="uid://cceygswhpxe5f" path="res://assets/art/ui elements/x3.png" id="9_hqceo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hqceo"]
 animations = [{
@@ -44,6 +48,15 @@ frame_3/duration = 0.2
 frame_4/texture = ExtResource("5_vcvlw")
 frame_4/duration = 0.2
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_6koal"]
+frames = 3
+frame_0/texture = ExtResource("7_vyrcq")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("8_vcvlw")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("9_hqceo")
+frame_2/duration = 0.2
+
 [node name="DeathScreen" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -51,6 +64,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_vcvlw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -62,7 +76,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.8648958, 0.00076585653, 0.89325273, 0.5294118)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Menu&title" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,48 +91,123 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Menu&title"]
 visible = false
 position = Vector2(304, 72)
 sprite_frames = SubResource("SpriteFrames_hqceo")
 frame_progress = 0.5720242
 
-[node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Menu&title"]
 layout_mode = 2
 texture = SubResource("AnimatedTexture_enw0n")
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="VBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="Menu&title"]
 custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 stretch_mode = 5
 
-[node name="YouDied" type="Label" parent="VBoxContainer"]
+[node name="YouDied" type="Label" parent="Menu&title"]
 layout_mode = 2
 text = "YOU DIED!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScoreText" type="Label" parent="VBoxContainer"]
+[node name="ScoreText" type="Label" parent="Menu&title"]
 layout_mode = 2
 text = "...BUT YOU COLLECTED _ CARROTS BEFORE YOU DID.
 TRY AGAIN?"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="DeathImage" type="TextureRect" parent="VBoxContainer"]
+[node name="DeathImage" type="TextureRect" parent="Menu&title"]
 layout_mode = 2
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="Menu&title"]
 visible = false
 layout_mode = 2
 texture_normal = ExtResource("1_pd44o")
 stretch_mode = 5
 
-[node name="RetryButton" type="Button" parent="VBoxContainer"]
+[node name="RetryButton" type="Button" parent="Menu&title"]
 layout_mode = 2
 text = "RETRY"
 
-[node name="CreditsButton" type="Button" parent="VBoxContainer"]
+[node name="CreditsButton" type="Button" parent="Menu&title"]
 layout_mode = 2
 text = "CREDITS"
+
+[node name="Credits" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.057291668
+anchor_top = 0.2037037
+anchor_right = 0.94270825
+anchor_bottom = 0.84953684
+offset_left = 687.0
+offset_top = 215.0
+offset_right = -687.0
+offset_bottom = -215.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.9372549)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Credits/VBoxContainer2"]
+layout_mode = 2
+text = "CREDITS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/VBoxContainer2"]
+visible = false
+clip_contents = false
+custom_minimum_size = Vector2(550, 380.475)
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat, velit sit amet hendrerit varius, ex lorem porttitor sapien, non pulvinar turpis sapien a quam. Mauris auctor arcu eget diam placerat, a dictum sapien tempor. Suspendisse blandit, arcu quis ultricies fringilla, mauris dui finibus dui, et varius dolor sapien dignissim mauris. Mauris ultrices est eget dolor dignissim porta. Mauris ex quam, cursus ut posuere tincidunt, vehicula at arcu. In mollis vulputate arcu nec vulputate. Vivamus eu odio mi. Integer nibh nisl, eleifend ac libero non, convallis tincidunt lectus. Duis ultricies lobortis libero. Nam vitae mauris nec ex lobortis hendrerit. In ac risus accumsan, porttitor nisi sit amet, hendrerit leo. Nullam nec neque porta, maximus dolor quis, porta ante. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In blandit, orci et facilisis suscipit, felis tellus malesuada dui, nec egestas lacus purus sit amet nisl. Nunc porta nisi ut ex gravida gravida."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="Credits/VBoxContainer2"]
+clip_contents = false
+custom_minimum_size = Vector2(0, 165.29)
+layout_mode = 2
+text = "[NAME] - ROLE
+[NAME] - ROLE
+[NAME] - ROLE
+[NAME] - ROLE
+
+Game #_ of the 33 Games in 100 Days project
+by the 100 Devs community"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureButton" type="TextureButton" parent="Credits"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9110429
+anchor_top = -0.016906869
+anchor_right = 1.1260675
+anchor_bottom = 0.24444842
+offset_right = -0.097984314
+offset_bottom = 0.0875206
+scale = Vector2(0.46990722, 0.46990722)
+texture_normal = SubResource("AnimatedTexture_6koal")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="Menu&title/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Menu&title/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="Credits/TextureButton" to="." method="_on_texture_button_pressed"]

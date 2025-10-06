@@ -10,7 +10,7 @@
 script = ExtResource("1_7jktm")
 
 [node name="Player" parent="." instance=ExtResource("4_eow3j")]
-position = Vector2(-534, -95)
+position = Vector2(-534, -99)
 
 [node name="Level" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_ryrav")]
 player = NodePath("../Player")
@@ -21,4 +21,3 @@ player = NodePath("../Player")
 game = NodePath("../..")
 
 [node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("5_iywne")]
-visible = false
