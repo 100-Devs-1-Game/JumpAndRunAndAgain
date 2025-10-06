@@ -1,9 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://78b2glth7glk"]
+[gd_scene load_steps=4 format=3 uid="uid://78b2glth7glk"]
 
 [ext_resource type="Script" uid="uid://cswwxk61ssfit" path="res://resources/player/player.gd" id="1_rdg5v"]
 [ext_resource type="SpriteFrames" uid="uid://brafpis3h2qfy" path="res://resources/player/player_sprite_frames.tres" id="2_y8vdq"]
-[ext_resource type="PackedScene" uid="uid://crrmsn1syrux2" path="res://scenes/death_screen.tscn" id="3_rdg5v"]
-[ext_resource type="PackedScene" uid="uid://bqod7lohmpvix" path="res://scenes/debug.tscn" id="4_u8mh4"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
 radius = 20.0
@@ -32,15 +30,3 @@ sprite_frames = ExtResource("2_y8vdq")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="DeathScreen" parent="Camera2D" instance=ExtResource("3_rdg5v")]
-visible = false
-offset_left = 96.1
-offset_top = 50.099995
-offset_right = 96.1
-offset_bottom = 50.099995
-scale = Vector2(0.1, 0.1)
-
-[node name="Debug" parent="Camera2D" instance=ExtResource("4_u8mh4")]
-visible = false
-scale = Vector2(0.1, 0.1)
