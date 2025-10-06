@@ -27,6 +27,8 @@ func _ready() -> void:
 func late_ready():
 	left_instance= obj.duplicate(11)
 	right_instance= obj.duplicate(11)
+	left_instance.name= "Left Clone " + obj.name 
+	right_instance.name= "Right Clone " + obj.name 
 	instances.append(left_instance)
 	instances.append(right_instance)
 	
@@ -36,8 +38,9 @@ func late_ready():
 	for instance in instances:
 		level.add_child(instance)
 		instance.physics_interpolation_mode= Node.PHYSICS_INTERPOLATION_MODE_OFF
+		instance.process_priority= 1
+		instance.process_physics_priority= 1
 		connect_signals(instance)
-
 
 func _process(_delta: float) -> void:
 	if not obj.global_transform.is_equal_approx(prev_transform):
@@ -52,21 +55,21 @@ func _process(_delta: float) -> void:
 func connect_signals(instance: Node2D):
 	var all_orginal_nodes: Array[Node]= obj.find_children("*")
 	all_orginal_nodes.push_front(obj)
-	var all_duplicated_nodes: Array[Node]= instance.find_children("*", "", true, false)
-	all_duplicated_nodes.push_front(instance)
+	var all_cloned_nodes: Array[Node]= instance.find_children("*", "", true, false)
+	all_cloned_nodes.push_front(instance)
 	
 	for i in all_orginal_nodes.size():
 		var orig_node: Node= all_orginal_nodes[i]
-		var dup_node: Node= all_duplicated_nodes[i]
-		prints(orig_node, dup_node)
-		assert(orig_node.get_class() == dup_node.get_class())
+		var clone_node: Node= all_cloned_nodes[i]
+		#prints(orig_node, clone_node)
+		assert(orig_node.get_class() == clone_node.get_class())
 		if orig_node is LoopComponent or orig_node is not Node2D:
-			print(" skipped")
+			#print(" skipped")
 			continue
 		
 		var orig_node2d: Node2D= orig_node
-		var dup_node2d: Node2D= dup_node
+		var clone_node2d: Node2D= clone_node
 		
 		orig_node2d.visibility_changed.connect(func():
-			dup_node2d.visible= orig_node2d.visible)
+			clone_node2d.visible= orig_node2d.visible)
 			
