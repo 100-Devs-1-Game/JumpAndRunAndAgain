@@ -49,7 +49,15 @@ func _process(_delta: float):
 	# NOTE: CHANGES DEBUG VISIBILITY
 	if Input.is_action_just_pressed("DebugPreview"):
 		print("0 pressed")
-		if player.visible == false:
-			player.visible = true
+		if $CanvasLayer/Debug.visible == false:
+			$CanvasLayer/Debug.visible = true
 			print("debug visible")
-		else: player.visible = false
+		else: $CanvasLayer/Debug.visible = false
+		
+	# NOTE: CHANGES DEATH MENU VISABILITY
+	if Input.is_action_just_pressed("MenuPreview"):
+		print ("9 pressed")
+		if $CanvasLayer/DeathScreen.visible == false:
+			$CanvasLayer/DeathScreen.visible = true
+			print ("menu visible")
+		else: $CanvasLayer/DeathScreen.visible = false
