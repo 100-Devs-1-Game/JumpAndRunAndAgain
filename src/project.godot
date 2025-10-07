@@ -13,7 +13,7 @@ config_version=5
 config/name="Jump and Run and Again"
 run/main_scene="uid://42an1dcwl74y"
 config/features=PackedStringArray("4.5", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cw5f8ri2hjtk5"
 
 [display]
 
