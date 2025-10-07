@@ -21,3 +21,4 @@ player = NodePath("../Player")
 game = NodePath("../..")
 
 [node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("5_iywne")]
+visible = false
