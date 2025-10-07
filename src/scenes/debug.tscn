@@ -97,6 +97,7 @@ scale = Vector2(2.0656164, 2.0656164)
 text = "WORLD SPEED = xy"
 
 [node name="AnimationLabel" type="Label" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1232.0
 offset_top = 1007.99994
