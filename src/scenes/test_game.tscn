@@ -1,0 +1,45 @@
+[gd_scene load_steps=10 format=4 uid="uid://x6na3g3bqcf8"]
+
+[ext_resource type="Script" uid="uid://o8kqqd2p4eu5" path="res://scripts/game.gd" id="1_ydt7i"]
+[ext_resource type="PackedScene" uid="uid://78b2glth7glk" path="res://resources/player/player.tscn" id="2_nybpm"]
+[ext_resource type="Script" uid="uid://bterw170ci2n6" path="res://scripts/infinite_level.gd" id="3_afj2h"]
+[ext_resource type="PackedScene" uid="uid://bqod7lohmpvix" path="res://scenes/debug.tscn" id="4_gp5yl"]
+[ext_resource type="TileSet" uid="uid://ddysoxjijb2ap" path="res://resources/level/black_white_tile_set.tres" id="4_n1fm3"]
+[ext_resource type="PackedScene" uid="uid://crrmsn1syrux2" path="res://scenes/death_screen.tscn" id="5_afj2h"]
+[ext_resource type="PackedScene" uid="uid://cfcgjedg4l1sa" path="res://scenes/carrot.tscn" id="5_kg4pj"]
+[ext_resource type="Script" uid="uid://cspholji4mi83" path="res://scripts/line_test.gd" id="6_yxdlq"]
+[ext_resource type="Script" uid="uid://i38x2psyicys" path="res://scripts/loop_component.gd" id="7_o8nx4"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_ydt7i")
+
+[node name="Player" parent="." instance=ExtResource("2_nybpm")]
+position = Vector2(59, 36)
+
+[node name="Level" type="Node2D" parent="." node_paths=PackedStringArray("player")]
+script = ExtResource("3_afj2h")
+player = NodePath("../Player")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Level"]
+tile_map_data = PackedByteArray("AAAAAAIAAQACAAEAAAABAAIAAQACAAEAAAABAAMAAQADAAIAAAACAAMAAQACAAIAAAADAAMAAQACAAMAAAADAAIAAQACAAEAAAACAAIAAQACAAEAAAAAAAMAAQACAAMAAAAEAAIAAQACAAEAAAAEAAMAAQACAAMAAAAFAAIAAQACAAEAAAAFAAMAAQADAAIAAAAGAAIAAQACAAEAAAAGAAMAAQACAAIAAAAHAAIAAQACAAEAAAAHAAMAAQACAAMAAAAIAAIAAQACAAEAAAAIAAMAAQACAAMAAAAJAAIAAQACAAEAAAAJAAMAAQADAAIAAAAKAAIAAQACAAEAAAAKAAMAAQACAAIAAAALAAIAAQACAAEAAAALAAMAAQACAAMAAAA=")
+tile_set = ExtResource("4_n1fm3")
+navigation_enabled = false
+
+[node name="Carrot" parent="Level" instance=ExtResource("5_kg4pj")]
+position = Vector2(678, 64)
+
+[node name="Line2D" type="Line2D" parent="Level"]
+points = PackedVector2Array(0, 0, 0, 1088)
+width = 5.0
+script = ExtResource("6_yxdlq")
+
+[node name="LoopComponent" type="Node" parent="Level/Line2D"]
+script = ExtResource("7_o8nx4")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Debug" parent="CanvasLayer" node_paths=PackedStringArray("game") instance=ExtResource("4_gp5yl")]
+game = NodePath("../..")
+
+[node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("5_afj2h")]
+visible = false
