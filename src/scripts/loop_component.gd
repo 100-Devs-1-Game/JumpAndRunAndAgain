@@ -66,10 +66,8 @@ func _process(_delta: float) -> void:
 		prev_transform = obj.global_transform
 
 func connect_signals(instance: Node2D):
-	var all_orginal_nodes: Array[Node] = obj.find_children("*")
-	all_orginal_nodes.push_front(obj)
-	var all_cloned_nodes: Array[Node] = instance.find_children("*", "", true, false)
-	all_cloned_nodes.push_front(instance)
+	var all_orginal_nodes: Array[Node] = get_all_orginal_nodes()
+	var all_cloned_nodes: Array[Node] = get_all_cloned_nodes(instance)
 	
 	# Loop through all original nodes ( including the root node ) and the respective
 	# clone nodes
@@ -96,4 +94,31 @@ func connect_signals(instance: Node2D):
 		if orig_node2d is AnimatedSprite2D:
 			(orig_node2d as AnimatedSprite2D).animation_changed.connect(func():
 				(clone_node2d as AnimatedSprite2D).play((orig_node2d as AnimatedSprite2D).animation))
-		
+
+# Sets a nodes property on the passed Node and all cloned Nodes
+func set_property(node: Node, property_name: StringName, value: Variant):
+	var all_orginal_nodes: Array[Node] = get_all_orginal_nodes()
+	var left_cloned_nodes: Array[Node] = get_all_cloned_nodes(left_instance)
+	var right_cloned_nodes: Array[Node] = get_all_cloned_nodes(right_instance)
+	
+	# Loop through all original nodes ( including the root node ) and the respective
+	# clone nodes
+	for i in all_orginal_nodes.size():
+		var orig_node: Node = all_orginal_nodes[i]
+		if orig_node == node:
+			var left_node: Node = left_cloned_nodes[i]
+			var right_node: Node = right_cloned_nodes[i]
+			orig_node.set(property_name, value)
+			left_node.set(property_name, value)
+			right_node.set(property_name, value)
+			break
+
+func get_all_orginal_nodes()-> Array[Node]:
+	var result: Array[Node] = obj.find_children("*")
+	result.push_front(obj)
+	return result
+
+func get_all_cloned_nodes(instance: Node2D)-> Array[Node]:
+	var result: Array[Node] = instance.find_children("*", "", true, false)
+	result.push_front(instance)
+	return result
