@@ -1,12 +1,37 @@
-[gd_scene load_steps=6 format=3 uid="uid://42an1dcwl74y"]
+[gd_scene load_steps=14 format=3 uid="uid://42an1dcwl74y"]
 
 [ext_resource type="Script" uid="uid://o8kqqd2p4eu5" path="res://scripts/game.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b7rryvumifoxi" path="res://scenes/level.tscn" id="3_ryrav"]
 [ext_resource type="PackedScene" uid="uid://78b2glth7glk" path="res://resources/player/player.tscn" id="4_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bqod7lohmpvix" path="res://scenes/debug.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://crrmsn1syrux2" path="res://scenes/death_screen.tscn" id="5_iywne"]
+[ext_resource type="Texture2D" uid="uid://qs5es43aroda" path="res://assets/art/ui elements/pausebutton1.png" id="6_kvpfn"]
+[ext_resource type="Texture2D" uid="uid://8mnu55fywl76" path="res://assets/art/ui elements/pausebutton2.png" id="7_dinhu"]
+[ext_resource type="Texture2D" uid="uid://hygoq7wchjyf" path="res://assets/art/ui elements/pausebutton3.png" id="8_kvuet"]
+[ext_resource type="Texture2D" uid="uid://dc6pj10u3xk84" path="res://assets/art/ui elements/pausedtext1.png" id="9_trtic"]
+[ext_resource type="Texture2D" uid="uid://boamlbvpxpld" path="res://assets/art/ui elements/pausedtext2.png" id="10_ir15t"]
+[ext_resource type="Texture2D" uid="uid://bdvk0gumo5te0" path="res://assets/art/ui elements/pausedtext3.png" id="11_ca42v"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_rysoc"]
+frames = 3
+frame_0/texture = ExtResource("6_kvpfn")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("7_dinhu")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("8_kvuet")
+frame_2/duration = 0.2
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_ssvqc"]
+frames = 3
+frame_0/texture = ExtResource("9_trtic")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("10_ir15t")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("11_ca42v")
+frame_2/duration = 0.2
 
 [node name="Game" type="Node"]
+process_mode = 1
 script = ExtResource("1_7jktm")
 
 [node name="Player" parent="." instance=ExtResource("4_eow3j")]
@@ -22,3 +47,31 @@ game = NodePath("../..")
 
 [node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("5_iywne")]
 visible = false
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_right = 0.08089583
+anchor_bottom = 0.14348148
+offset_right = -0.3200035
+offset_bottom = 0.040000916
+texture_normal = SubResource("AnimatedTexture_rysoc")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="PausedText" type="TextureRect" parent="CanvasLayer"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.30774
+offset_top = -84.0
+offset_right = 200.30762
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AnimatedTexture_ssvqc")
+stretch_mode = 5
+
+[connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
