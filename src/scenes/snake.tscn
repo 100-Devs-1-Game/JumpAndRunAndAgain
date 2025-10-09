@@ -1,40 +1,40 @@
 [gd_scene load_steps=11 format=3 uid="uid://bnqk6ptb8tj4p"]
 
 [ext_resource type="Script" uid="uid://df8bun2cvrah1" path="res://scripts/snake.gd" id="1_auphx"]
-[ext_resource type="Texture2D" uid="uid://c4eap8d8cs1qf" path="res://assets/art/enemies/snake_sheet.png" id="2_l4b1q"]
+[ext_resource type="Texture2D" uid="uid://cwlvu6qiloipu" path="res://assets/art/enemies/snake-upscale-outline25.png" id="2_l4b1q"]
 [ext_resource type="Script" uid="uid://i38x2psyicys" path="res://scripts/loop_component.gd" id="3_4j5f3"]
 [ext_resource type="Script" uid="uid://ctjgo3gmrdk3f" path="res://scripts/killzone.gd" id="4_l4b1q"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2r41h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j5f3"]
 atlas = ExtResource("2_l4b1q")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(0, 0, 1000, 1000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_klq6b"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_1p8c4"]
 atlas = ExtResource("2_l4b1q")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(1000, 0, 1000, 1000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b121j"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_oj63r"]
 atlas = ExtResource("2_l4b1q")
-region = Rect2(128, 0, 64, 64)
+region = Rect2(2000, 0, 1000, 1000)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8c41q"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_f07f3"]
 atlas = ExtResource("2_l4b1q")
-region = Rect2(192, 0, 64, 64)
+region = Rect2(3000, 0, 1000, 1000)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_64w2a"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2r41h")
+"texture": SubResource("AtlasTexture_4j5f3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_klq6b")
+"texture": SubResource("AtlasTexture_1p8c4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_b121j")
+"texture": SubResource("AtlasTexture_oj63r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_8c41q")
+"texture": SubResource("AtlasTexture_f07f3")
 }],
 "loop": true,
 "name": &"default",
@@ -49,7 +49,10 @@ collision_layer = 4
 script = ExtResource("1_auphx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -4.999999)
+scale = Vector2(0.07399999, 0.07399999)
 sprite_frames = SubResource("SpriteFrames_64w2a")
+frame_progress = 0.7381293
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_fpun6")
