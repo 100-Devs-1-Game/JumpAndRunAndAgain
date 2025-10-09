@@ -75,4 +75,5 @@ grow_vertical = 2
 texture = SubResource("AnimatedTexture_ssvqc")
 stretch_mode = 5
 
+[connection signal="died" from="Player" to="." method="death"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
