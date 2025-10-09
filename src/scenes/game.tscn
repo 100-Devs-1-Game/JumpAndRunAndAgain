@@ -41,6 +41,7 @@ position = Vector2(59, 36)
 player = NodePath("../Player")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
 
 [node name="Debug" parent="CanvasLayer" node_paths=PackedStringArray("game") instance=ExtResource("4_lbhrr")]
 game = NodePath("../..")
