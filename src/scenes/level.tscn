@@ -1,9 +1,16 @@
-[gd_scene load_steps=5 format=4 uid="uid://b7rryvumifoxi"]
+[gd_scene load_steps=7 format=4 uid="uid://b7rryvumifoxi"]
 
 [ext_resource type="Script" uid="uid://bterw170ci2n6" path="res://scripts/infinite_level.gd" id="1_w7c3h"]
 [ext_resource type="TileSet" uid="uid://ddysoxjijb2ap" path="res://resources/level/black_white_tile_set.tres" id="2_w7c3h"]
 [ext_resource type="PackedScene" uid="uid://bpd27sxvihdir" path="res://scenes/carrot.tscn" id="3_ppgk2"]
 [ext_resource type="PackedScene" uid="uid://bnqk6ptb8tj4p" path="res://scenes/snake.tscn" id="4_mx8sn"]
+[ext_resource type="PackedScene" uid="uid://c72xc8j6a0t1y" path="res://scenes/hawk.tscn" id="5_ppgk2"]
+
+[sub_resource type="Curve2D" id="Curve2D_olg7q"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 256, -64, 0, 0, 0, 0, 640, 64, 0, 0, 0, 0, 960, -64, 0, 0, 0, 0, 1152, 64)
+}
+point_count = 5
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_w7c3h")
@@ -18,3 +25,16 @@ position = Vector2(1474, 70)
 
 [node name="Snake" parent="." instance=ExtResource("4_mx8sn")]
 position = Vector2(690, 160)
+
+[node name="Path Hawk" type="Path2D" parent="."]
+curve = SubResource("Curve2D_olg7q")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path Hawk"]
+position = Vector2(595.7699, 49.25663)
+rotation = -0.24497867
+progress = 622.0277
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="Hawk" parent="Path Hawk/PathFollow2D" instance=ExtResource("5_ppgk2")]
