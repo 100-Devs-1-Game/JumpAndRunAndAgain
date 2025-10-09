@@ -114,11 +114,11 @@ func set_property(node: Node, property_name: StringName, value: Variant):
 			break
 
 func get_all_orginal_nodes()-> Array[Node]:
-	var result: Array[Node]= obj.find_children("*")
+	var result: Array[Node] = obj.find_children("*")
 	result.push_front(obj)
 	return result
 
 func get_all_cloned_nodes(instance: Node2D)-> Array[Node]:
-	var result: Array[Node]= instance.find_children("*", "", true, false)
+	var result: Array[Node] = instance.find_children("*", "", true, false)
 	result.push_front(instance)
 	return result
