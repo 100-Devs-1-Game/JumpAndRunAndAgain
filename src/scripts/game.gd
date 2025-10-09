@@ -70,5 +70,6 @@ func _on_pause_button_pressed():
 	if $CanvasLayer/PausedText.visible == false:
 		$CanvasLayer/PausedText.visible = true
 		get_tree().paused = true
-	else: $CanvasLayer/PausedText.visible = false
-	get_tree().paused = false
+	else: 
+		$CanvasLayer/PausedText.visible = false
+		get_tree().paused = false
