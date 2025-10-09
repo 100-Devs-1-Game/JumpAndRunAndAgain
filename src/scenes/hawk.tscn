@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c72xc8j6a0t1y"]
+[gd_scene load_steps=13 format=3 uid="uid://c72xc8j6a0t1y"]
 
 [ext_resource type="Script" uid="uid://d4mb5tq7n1duh" path="res://scripts/hawk.gd" id="1_kr1b3"]
 [ext_resource type="Texture2D" uid="uid://ih8cactbnjep" path="res://assets/art/enemies/hawk_sheet.png" id="2_76ayh"]
 [ext_resource type="Script" uid="uid://i38x2psyicys" path="res://scripts/loop_component.gd" id="3_ty8fi"]
+[ext_resource type="Script" uid="uid://ctjgo3gmrdk3f" path="res://scripts/killzone.gd" id="4_76ayh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t1rx8"]
 atlas = ExtResource("2_76ayh")
@@ -73,3 +74,7 @@ shape = SubResource("RectangleShape2D_82cfe")
 [node name="LoopComponent" type="Node" parent="."]
 script = ExtResource("3_ty8fi")
 metadata/_custom_type_script = "uid://i38x2psyicys"
+
+[node name="Killzone" type="Area2D" parent="."]
+script = ExtResource("4_76ayh")
+metadata/_custom_type_script = "uid://ctjgo3gmrdk3f"
