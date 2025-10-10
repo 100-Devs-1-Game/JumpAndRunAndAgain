@@ -57,7 +57,7 @@ func change_player_stats(increase: bool= true):
 		jump_factor = 1 / (1 + jump_increase_per_iteration)
 		
 	player.maxSpeedLock *= speed_factor
-	player.jumpHeight *= jump_factor 
+	player.jumpMagnitude *= jump_factor 
 
 
 # NOTE: UPDATES EVERY SECOND(?)

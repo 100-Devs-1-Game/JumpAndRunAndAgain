@@ -7,7 +7,7 @@ signal change_player_stats(increase: bool)
 
 func _process(_delta: float):
 	%PlayerSpeedLabel.text = "PLAYER SPEED: %d" % int(game.player.maxSpeedLock)
-	%PlayerJumpHeightLabel.text = "PLAYER JUMP HEIGHT: %.1f" % game.player.jumpHeight
+	%PlayerJumpHeightLabel.text = "PLAYER JUMP HEIGHT: %d" % game.player.jumpMagnitude
 	#$AnimationLabel.text = "currently playing " + game.currentanim + "animation"
 	$ScoreLabel.text = "SCORE = " + str(game.score)
 	$HighscoreLabel.text = "HIGHSCORE = " + str(game.highscore)
