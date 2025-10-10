@@ -33,8 +33,6 @@ frame_2/duration = 0.2
 [node name="Game" type="Node"]
 process_mode = 1
 script = ExtResource("1_7jktm")
-speed_increase_per_iteration = 20.0
-jump_increase_per_iteration = 20.0
 
 [node name="Player" parent="." instance=ExtResource("4_eow3j")]
 position = Vector2(59, 36)
