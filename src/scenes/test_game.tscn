@@ -45,3 +45,4 @@ game = NodePath("../..")
 visible = false
 
 [connection signal="player_looped" from="Level" to="." method="loop"]
+[connection signal="change_player_stats" from="CanvasLayer/Debug" to="." method="change_player_stats"]
