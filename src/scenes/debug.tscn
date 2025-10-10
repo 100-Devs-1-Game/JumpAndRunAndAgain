@@ -137,10 +137,12 @@ text = "PLAYER JUMP HEIGHT= ?"
 
 [node name="IncreaseButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "INCREASE"
 
 [node name="DecreaseButton" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+focus_mode = 0
 text = "DECREASE"
 
 [connection signal="pressed" from="HBoxContainer/IncreaseButton" to="." method="_on_increase_button_pressed"]
