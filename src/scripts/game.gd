@@ -1,10 +1,10 @@
 class_name Game
 extends Node
 
-## Factor for increasing the players speed
-@export var speed_increase_per_iteration: float = 0.05
-## Factor for increasing the players jump height 
-@export var jump_increase_per_iteration: float = 0.05
+## Flat value for increasing the players speed for each iteration
+@export var speed_increase_per_iteration: float = 20
+## Flat value for increasing the players jump height for each iteration 
+@export var jump_increase_per_iteration: float = 20
 
 @onready var player: Player = $Player
 
@@ -47,17 +47,13 @@ func loop(forward: bool):
 
 
 func change_player_stats(increase: bool= true):
-	var speed_factor: float
-	var jump_factor: float
 	if increase:
-		speed_factor = 1 + speed_increase_per_iteration
-		jump_factor = 1 + jump_increase_per_iteration
+		player.maxSpeedLock += speed_increase_per_iteration
+		player.jumpMagnitude += jump_increase_per_iteration
 	else:
-		speed_factor = 1 / (1 + speed_increase_per_iteration)
-		jump_factor = 1 / (1 + jump_increase_per_iteration)
-		
-	player.maxSpeedLock *= speed_factor
-	player.jumpMagnitude *= jump_factor 
+		player.maxSpeedLock -= speed_increase_per_iteration
+		player.jumpMagnitude -= jump_increase_per_iteration
+
 
 
 # NOTE: UPDATES EVERY SECOND(?)
