@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bqod7lohmpvix" path="res://scenes/debug.tscn" id="4_gp5yl"]
 [ext_resource type="TileSet" uid="uid://ddysoxjijb2ap" path="res://resources/level/black_white_tile_set.tres" id="4_n1fm3"]
 [ext_resource type="PackedScene" uid="uid://crrmsn1syrux2" path="res://scenes/death_screen.tscn" id="5_afj2h"]
-[ext_resource type="PackedScene" uid="uid://cfcgjedg4l1sa" path="res://scenes/carrot.tscn" id="5_kg4pj"]
+[ext_resource type="PackedScene" uid="uid://bpd27sxvihdir" path="res://scenes/carrot.tscn" id="5_kg4pj"]
 [ext_resource type="Script" uid="uid://cspholji4mi83" path="res://scripts/line_test.gd" id="6_yxdlq"]
 [ext_resource type="Script" uid="uid://i38x2psyicys" path="res://scripts/loop_component.gd" id="7_o8nx4"]
 
@@ -43,3 +43,5 @@ game = NodePath("../..")
 
 [node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("5_afj2h")]
 visible = false
+
+[connection signal="player_looped" from="Level" to="." method="loop"]

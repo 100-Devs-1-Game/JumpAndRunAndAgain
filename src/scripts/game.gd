@@ -1,6 +1,11 @@
 class_name Game
 extends Node
 
+## Factor for increasing the players speed
+@export var speed_increase_per_iteration: float = 0.05
+## Factor for increasing the players jump height 
+@export var jump_increase_per_iteration: float = 0.05
+
 @onready var player: Player = $Player
 
 ### GLOBAL VARIABLES
@@ -8,10 +13,10 @@ extends Node
 var score: int
 var highscore: int
 
-# WORLD/CONTROL PROPERTIES
-var worldspeed: float = 1.0
-var speedmodifier: float = 0.1
-
+# Current loop the player is in
+var current_loop: int
+# Maximum loop the player was in during this run
+var max_loop: int
 
 ### GAME FUNCTIONS
 ## COLLISION CONTACT
@@ -33,8 +38,26 @@ func start():
 
 # NOTE: INCREASE WORLD SPEED ON COMPLETION OF LOOP
 # TODO: WRITE
-func loop():
-	pass
+func loop(forward: bool):
+	current_loop += 1 if forward else -1
+	if current_loop > max_loop:
+		assert(current_loop == max_loop + 1)
+		max_loop = current_loop
+		change_player_stats()
+
+
+func change_player_stats(increase: bool= true):
+	var speed_factor: float
+	var jump_factor: float
+	if increase:
+		speed_factor = 1 + speed_increase_per_iteration
+		jump_factor = 1 + jump_increase_per_iteration
+	else:
+		speed_factor = 1 / (1 + speed_increase_per_iteration)
+		jump_factor = 1 / (1 + jump_increase_per_iteration)
+		
+	player.maxSpeedLock *= speed_factor
+	player.jumpHeight *= jump_factor 
 
 
 # NOTE: UPDATES EVERY SECOND(?)

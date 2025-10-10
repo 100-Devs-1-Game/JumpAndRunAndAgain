@@ -1,6 +1,8 @@
 class_name InfiniteScrollingLevel
 extends Node2D
 
+signal player_looped(forward: bool)
+
 @export var player: Player
 
 @onready var tile_map_layer: TileMapLayer = $TileMapLayer
@@ -27,5 +29,7 @@ func _process(_delta: float) -> void:
 	# Jump player when reaching start or end of level
 	if player.position.x > next_tile_map_layer.position.x:
 		player.position.x -= tile_map_offset
+		player_looped.emit(true)
 	elif player.position.x < prev_tile_map_layer.position.x + tile_map_offset:
 		player.position.x += tile_map_offset
+		player_looped.emit(false)

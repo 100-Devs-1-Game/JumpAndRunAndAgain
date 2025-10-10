@@ -87,15 +87,6 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(1, 0.7058824, 1, 0.5294118)
 
-[node name="WorldSpeedLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 23.999992
-offset_top = 1007.99994
-offset_right = 187.0
-offset_bottom = 1031.0
-scale = Vector2(2.0656164, 2.0656164)
-text = "WORLD SPEED = xy"
-
 [node name="AnimationLabel" type="Label" parent="."]
 visible = false
 layout_mode = 0
@@ -124,23 +115,33 @@ offset_bottom = 39.000046
 scale = Vector2(2.0656164, 2.0656164)
 text = "HIGHSCORE = 0"
 
-[node name="IncreaseButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 352.0
-offset_top = 1000.0
-offset_right = 436.0
-offset_bottom = 1031.0
-scale = Vector2(2.0656164, 2.0656164)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 388.0
+grow_vertical = 0
+theme_override_constants/separation = 15
+
+[node name="PlayerSpeedLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PLAYER SPEED= ?"
+
+[node name="PlayerJumpHeightLabel" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PLAYER JUMP HEIGHT= ?"
+
+[node name="IncreaseButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
 text = "INCREASE"
 
-[node name="DecreaseButton" type="Button" parent="."]
-layout_mode = 0
-offset_left = 536.0
-offset_top = 1000.0
-offset_right = 623.0
-offset_bottom = 1031.0
-scale = Vector2(2.0714347, 2.0788565)
+[node name="DecreaseButton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
 text = "DECREASE"
 
-[connection signal="pressed" from="IncreaseButton" to="." method="_on_increase_button_pressed"]
-[connection signal="pressed" from="DecreaseButton" to="." method="_on_decrease_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/IncreaseButton" to="." method="_on_increase_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/DecreaseButton" to="." method="_on_decrease_button_pressed"]
