@@ -1,6 +1,11 @@
 class_name Game
 extends Node
 
+signal player_entered_new_loop
+signal player_entered_current_loop
+signal player_entered_previous_loop
+
+
 ## Flat value for increasing the players speed for each iteration
 @export var speed_increase_per_iteration: float = 20
 ## Flat value for increasing the players jump height for each iteration 
@@ -36,6 +41,11 @@ func loop(forward: bool):
 		assert(current_loop == max_loop + 1)
 		max_loop = current_loop
 		change_player_stats()
+		player_entered_new_loop.emit()
+	elif current_loop == max_loop:
+		player_entered_current_loop.emit()
+	else:
+		player_entered_previous_loop.emit()
 
 
 func change_player_stats(increase: bool= true):
