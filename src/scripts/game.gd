@@ -27,17 +27,9 @@ func death():
 	# stop player movement and display death sprite
 	$"CanvasLayer/DeathScreen/Menu&title/ScoreText".text = "...BUT YOU COLLECTED " + str(score) + " CARROTS BEFORE YOU DID. TRY AGAIN?"
 	$CanvasLayer/DeathScreen.visible = true
-	# DEATH SCREEN MENU AND BUTTON IMPUTS (SANS RETRY) IMPLEMENTED
 
-# NOTE: RESTART PLAYER FROM DEFINED POSITION AND RESET WORLD PROPERTIES & SCORE TO DEFAULT VALUES
-# TODO: WRITE
-func start():
-	# set player position to starting location
-	# reset variable values
-	pass
 
-# NOTE: INCREASE WORLD SPEED ON COMPLETION OF LOOP
-# TODO: WRITE
+# NOTE: INCREASE PLAYER STATS ON COMPLETION OF LOOP
 func loop(forward: bool):
 	current_loop += 1 if forward else -1
 	if current_loop > max_loop:
@@ -92,3 +84,7 @@ func _on_pause_button_pressed():
 	else: 
 		$CanvasLayer/PausedText.visible = false
 		get_tree().paused = false
+
+
+func _on_death_screen_request_restart() -> void:
+	get_tree().reload_current_scene()

@@ -78,4 +78,5 @@ stretch_mode = 5
 [connection signal="died" from="Player" to="." method="death"]
 [connection signal="player_looped" from="Level" to="." method="loop"]
 [connection signal="change_player_stats" from="CanvasLayer/Debug" to="." method="change_player_stats"]
+[connection signal="request_restart" from="CanvasLayer/DeathScreen" to="." method="_on_death_screen_request_restart"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
