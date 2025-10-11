@@ -1,6 +1,8 @@
 class_name Killzone
 extends Area2D
 
+signal triggered
+
 
 func _ready() -> void:
 	monitorable= false
@@ -20,4 +22,6 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D):
 	assert(body is Player)
 	(body as Player).kill()
+	queue_free()
+	triggered.emit()
 	
