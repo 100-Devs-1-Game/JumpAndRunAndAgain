@@ -5,6 +5,12 @@ signal change_player_stats(increase: bool)
 
 @export var game: Game
 
+
+func _ready() -> void:
+	if not OS.is_debug_build():
+		hide()
+
+
 func _process(_delta: float):
 	%PlayerSpeedLabel.text = "PLAYER SPEED: %d" % int(game.player.maxSpeedLock)
 	%PlayerJumpHeightLabel.text = "PLAYER JUMP HEIGHT: %d" % game.player.jumpMagnitude

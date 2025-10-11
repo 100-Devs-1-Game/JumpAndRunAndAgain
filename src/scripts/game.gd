@@ -69,12 +69,13 @@ func _process(_delta: float):
 	
 	
 	# NOTE: CHANGES DEBUG VISIBILITY
-	if Input.is_action_just_pressed("DebugPreview"):
+	if Input.is_action_just_pressed("DebugPreview") and OS.is_debug_build():
 		print("0 pressed")
 		if $CanvasLayer/Debug.visible == false:
 			$CanvasLayer/Debug.visible = true
 			print("debug visible")
-		else: $CanvasLayer/Debug.visible = false
+		else: 
+			$CanvasLayer/Debug.visible = false
 		
 	# NOTE: CHANGES DEATH MENU VISABILITY
 	if Input.is_action_just_pressed("MenuPreview"):
@@ -82,7 +83,8 @@ func _process(_delta: float):
 		if $CanvasLayer/DeathScreen.visible == false:
 			$CanvasLayer/DeathScreen.visible = true
 			print ("menu visible")
-		else: $CanvasLayer/DeathScreen.visible = false
+		else: 
+			$CanvasLayer/DeathScreen.visible = false
 
 
 
