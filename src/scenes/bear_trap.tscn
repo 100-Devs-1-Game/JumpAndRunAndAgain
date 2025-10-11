@@ -40,7 +40,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8isq"]
-size = Vector2(100, 40)
+size = Vector2(200, 40)
 
 [node name="BearTrap" type="Node2D"]
 script = ExtResource("1_gbrjp")
