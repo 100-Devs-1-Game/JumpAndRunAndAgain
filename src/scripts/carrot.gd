@@ -3,6 +3,7 @@ extends Area2D
 signal collected
 
 @export var greyed_out: Color
+@export var respawn_rate: float = 1.0
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var loop_component: LoopComponent = $LoopComponent
@@ -41,6 +42,6 @@ func _on_body_entered(_body: Node2D) -> void:
 	can_collect = false
 	animated_sprite.play("empty")
 	collected.emit()
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().create_timer(respawn_rate).timeout
 	animated_sprite.play("default")
 	loop_component.set_property(animated_sprite, "modulate", greyed_out)
