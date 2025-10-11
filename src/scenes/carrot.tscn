@@ -41,6 +41,9 @@ greyed_out = Color(0.3019608, 0.3019608, 0.3019608, 0.4745098)
 
 [node name="LoopComponent" type="Node" parent="."]
 script = ExtResource("2_x0dx6")
+left_overrides = {
+"modulate": Color(0.3019608, 0.3019608, 0.3019608, 0.4745098)
+}
 metadata/_custom_type_script = "uid://i38x2psyicys"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

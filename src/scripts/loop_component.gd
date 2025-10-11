@@ -1,8 +1,14 @@
 class_name LoopComponent
 extends Node
 
+@export var left_overrides: Dictionary
+@export var right_overrides: Dictionary
+
 # The node that will be cloned
 @onready var obj: Node2D = get_parent()
+
+@onready var overrides: Array[Dictionary] = [ left_overrides, right_overrides ]
+
 
 var level: InfiniteScrollingLevel
 
@@ -44,7 +50,9 @@ func late_ready():
 	left_instance.position.x -= level.tile_map_offset
 	right_instance.position.x += level.tile_map_offset
 
-	for instance in instances:
+	for i in 2:
+		var instance: Node2D= instances[i]
+		var override_dict: Dictionary= overrides[i]
 		level.add_child(instance)
 		# Physics interpolation should probably be turned off because
 		# we sync the transform in _process
@@ -52,6 +60,7 @@ func late_ready():
 		# Run any clone process functions after the original ones
 		instance.process_priority = 1
 		instance.process_physics_priority = 1
+		apply_overrides(instance, override_dict)
 		connect_signals(instance)
 
 func _process(_delta: float) -> void:
@@ -109,9 +118,17 @@ func set_property(node: Node, property_name: StringName, value: Variant):
 			var left_node: Node = left_cloned_nodes[i]
 			var right_node: Node = right_cloned_nodes[i]
 			orig_node.set(property_name, value)
-			left_node.set(property_name, value)
-			right_node.set(property_name, value)
+			if not left_overrides.has(property_name):
+				left_node.set(property_name, value)
+			if not right_overrides.has(property_name):
+				right_node.set(property_name, value)
 			break
+
+
+func apply_overrides(instance: Node2D, override_dict: Dictionary):
+	for key in override_dict.keys():
+		instance.set(key, override_dict[key])
+
 
 func get_all_orginal_nodes()-> Array[Node]:
 	var result: Array[Node] = obj.find_children("*")
