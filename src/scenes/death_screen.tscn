@@ -66,14 +66,13 @@ grow_vertical = 2
 script = ExtResource("1_vcvlw")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.8648958, 0.00076585653, 0.89325273, 0.5294118)
+color = Color(0.13333334, 0.12941177, 0.12156863, 0.8627451)
 
 [node name="Menu&title" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -88,6 +87,7 @@ offset_right = 350.0
 offset_bottom = 353.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 30
 alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Menu&title"]
@@ -101,19 +101,17 @@ layout_mode = 2
 texture = SubResource("AnimatedTexture_enw0n")
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="Menu&title"]
-custom_minimum_size = Vector2(0, 300)
-layout_mode = 2
-stretch_mode = 5
-
 [node name="YouDied" type="Label" parent="Menu&title"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "YOU DIED!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ScoreText" type="Label" parent="Menu&title"]
+unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "...BUT YOU COLLECTED _ CARROTS BEFORE YOU DID.
 TRY AGAIN?"
 horizontal_alignment = 1
@@ -124,10 +122,12 @@ layout_mode = 2
 
 [node name="RetryButton" type="Button" parent="Menu&title"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "RETRY"
 
 [node name="CreditsButton" type="Button" parent="Menu&title"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 40
 text = "CREDITS"
 
 [node name="Credits" type="ColorRect" parent="."]
@@ -201,6 +201,7 @@ texture_normal = SubResource("AnimatedTexture_6koal")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Menu&title/RetryButton" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="Menu&title/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Credits/TextureButton" to="." method="_on_texture_button_pressed"]

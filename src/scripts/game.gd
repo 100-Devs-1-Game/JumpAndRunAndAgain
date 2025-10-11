@@ -29,10 +29,9 @@ var max_loop: int
 # TODO: FINISH IMPLEMENTING DEATH SPRITE (TBM)
 func death():
 	# stop player movement and display death sprite
-	$"CanvasLayer/DeathScreen/Menu&title/ScoreText".text = "...BUT YOU COLLECTED " + str(score) + " CARROTS BEFORE YOU DID. TRY AGAIN?"
-	$CanvasLayer/DeathScreen.visible = true
 	if score > Global.highscore:
 		Global.highscore= score
+	$CanvasLayer/DeathScreen.visible = true
 
 # NOTE: INCREASE PLAYER STATS ON COMPLETION OF LOOP
 func loop(forward: bool):
