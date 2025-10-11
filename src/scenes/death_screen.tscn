@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://crrmsn1syrux2"]
+[gd_scene load_steps=21 format=3 uid="uid://crrmsn1syrux2"]
 
 [ext_resource type="Script" uid="uid://cke7rm1pytcnu" path="res://scripts/menu.gd" id="1_vcvlw"]
 [ext_resource type="Texture2D" uid="uid://drlw07pc0tb4x" path="res://assets/art/ui elements/title1.png" id="1_wfw3d"]
@@ -6,9 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://ctyr40ii716ji" path="res://assets/art/ui elements/title3.png" id="3_wraau"]
 [ext_resource type="Texture2D" uid="uid://cj855lyrkgra3" path="res://assets/art/ui elements/title4.png" id="4_vyrcq"]
 [ext_resource type="Texture2D" uid="uid://b5h0hl252ynff" path="res://assets/art/ui elements/title5.png" id="5_vcvlw"]
+[ext_resource type="Texture2D" uid="uid://bjkcicnvs28fr" path="res://assets/art/ui elements/retry1.png" id="7_ogo5k"]
 [ext_resource type="Texture2D" uid="uid://epxmlk88jri0" path="res://assets/art/ui elements/x1.png" id="7_vyrcq"]
+[ext_resource type="Texture2D" uid="uid://dnnje352xnweu" path="res://assets/art/ui elements/retry2.png" id="8_gn5uh"]
 [ext_resource type="Texture2D" uid="uid://blx3a32ks7kt2" path="res://assets/art/ui elements/x2.png" id="8_vcvlw"]
 [ext_resource type="Texture2D" uid="uid://cceygswhpxe5f" path="res://assets/art/ui elements/x3.png" id="9_hqceo"]
+[ext_resource type="Texture2D" uid="uid://ckkew7ebw05o7" path="res://assets/art/ui elements/retry3.png" id="9_j0que"]
+[ext_resource type="Texture2D" uid="uid://dg8jj81g1sk6a" path="res://assets/art/ui elements/credits1.png" id="10_0jcas"]
+[ext_resource type="Texture2D" uid="uid://i0uwnc3b5dtx" path="res://assets/art/ui elements/credits2.png" id="11_e2qdh"]
+[ext_resource type="Texture2D" uid="uid://c4gj3be4j7kdc" path="res://assets/art/ui elements/credits3.png" id="12_0rjdl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hqceo"]
 animations = [{
@@ -47,6 +53,24 @@ frame_3/duration = 0.2
 frame_4/texture = ExtResource("5_vcvlw")
 frame_4/duration = 0.2
 
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_yp3gm"]
+frames = 3
+frame_0/texture = ExtResource("7_ogo5k")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("8_gn5uh")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("9_j0que")
+frame_2/duration = 0.2
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_0dbov"]
+frames = 3
+frame_0/texture = ExtResource("10_0jcas")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("11_e2qdh")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("12_0rjdl")
+frame_2/duration = 0.2
+
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_6koal"]
 frames = 3
 frame_0/texture = ExtResource("7_vyrcq")
@@ -81,10 +105,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -505.0
-offset_right = 350.0
-offset_bottom = 353.0
+offset_left = -376.0
+offset_top = -489.5
+offset_right = 376.0
+offset_bottom = 489.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 30
@@ -120,12 +144,26 @@ vertical_alignment = 1
 [node name="DeathImage" type="TextureRect" parent="Menu&title"]
 layout_mode = 2
 
+[node name="RetryButtonTextured" type="TextureButton" parent="Menu&title"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture_normal = SubResource("AnimatedTexture_yp3gm")
+stretch_mode = 5
+
 [node name="RetryButton" type="Button" parent="Menu&title"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "RETRY"
 
+[node name="CreditsButtonTextured" type="TextureButton" parent="Menu&title"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+texture_normal = SubResource("AnimatedTexture_0dbov")
+stretch_mode = 5
+
 [node name="CreditsButton" type="Button" parent="Menu&title"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "CREDITS"
@@ -202,6 +240,8 @@ stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="pressed" from="Menu&title/RetryButtonTextured" to="." method="_on_retry_button_pressed"]
 [connection signal="pressed" from="Menu&title/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="Menu&title/CreditsButtonTextured" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Menu&title/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="Credits/TextureButton" to="." method="_on_texture_button_pressed"]
