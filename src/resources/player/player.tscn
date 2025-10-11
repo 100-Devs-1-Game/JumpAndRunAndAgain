@@ -14,7 +14,6 @@ script = ExtResource("1_rdg5v")
 PlayerSprite = NodePath("AnimatedSprite2D")
 PlayerCollider = NodePath("CollisionShape2D")
 maxSpeed = 400.0
-jumpHeight = 3.0
 gravityScale = 40.0
 run = true
 jump = true
