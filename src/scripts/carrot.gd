@@ -42,6 +42,6 @@ func _on_body_entered(_body: Node2D) -> void:
 	can_collect = false
 	animated_sprite.play("empty")
 	collected.emit()
+	loop_component.set_property(self, "modulate", greyed_out)
 	await get_tree().create_timer(respawn_rate).timeout
 	animated_sprite.play("default")
-	loop_component.set_property(self, "modulate", greyed_out)
