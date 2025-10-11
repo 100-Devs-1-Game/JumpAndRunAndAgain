@@ -32,7 +32,7 @@ func _ready() -> void:
 func late_ready():
 	# Create clones of the parent node including all children
 	# but without scripts
-	const duplicate_flags: int = DUPLICATE_SIGNALS | DUPLICATE_GROUPS
+	const duplicate_flags: int = 0
 	left_instance = obj.duplicate(duplicate_flags)
 	right_instance = obj.duplicate(duplicate_flags)
 	left_instance.name = "Left Clone " + obj.name 
