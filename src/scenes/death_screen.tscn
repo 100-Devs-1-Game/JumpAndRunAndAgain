@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://crrmsn1syrux2"]
+[gd_scene load_steps=13 format=3 uid="uid://crrmsn1syrux2"]
 
-[ext_resource type="Texture2D" uid="uid://baqrxhadp3hxi" path="res://assets/placeholder art/proxyretry.png" id="1_pd44o"]
 [ext_resource type="Script" uid="uid://cke7rm1pytcnu" path="res://scripts/menu.gd" id="1_vcvlw"]
 [ext_resource type="Texture2D" uid="uid://drlw07pc0tb4x" path="res://assets/art/ui elements/title1.png" id="1_wfw3d"]
 [ext_resource type="Texture2D" uid="uid://b8x3hotlgjkv7" path="res://assets/art/ui elements/title2.png" id="2_wtkkp"]
@@ -122,12 +121,6 @@ vertical_alignment = 1
 
 [node name="DeathImage" type="TextureRect" parent="Menu&title"]
 layout_mode = 2
-
-[node name="TextureButton" type="TextureButton" parent="Menu&title"]
-visible = false
-layout_mode = 2
-texture_normal = ExtResource("1_pd44o")
-stretch_mode = 5
 
 [node name="RetryButton" type="Button" parent="Menu&title"]
 layout_mode = 2
