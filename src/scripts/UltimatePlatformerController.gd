@@ -157,7 +157,7 @@ var wasLatched
 var crouching
 var groundPounding
 
-var anim
+var anim: AnimatedSprite2D
 var col
 var animScaleLock : Vector2
 
@@ -286,7 +286,8 @@ func _process(_delta):
 	#jump
 	if velocity.y < 0 and jump and !dashing:
 		anim.speed_scale = 1
-		anim.play("jump")
+		if not anim.animation == "jump":
+			anim.play("jump")
 		
 	if velocity.y > 40 and falling and !dashing and !crouching:
 		anim.speed_scale = 1
