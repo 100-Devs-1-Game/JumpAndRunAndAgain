@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://x6na3g3bqcf8"]
+[gd_scene load_steps=13 format=4 uid="uid://x6na3g3bqcf8"]
 
 [ext_resource type="Script" uid="uid://o8kqqd2p4eu5" path="res://scripts/game.gd" id="1_ydt7i"]
 [ext_resource type="PackedScene" uid="uid://78b2glth7glk" path="res://resources/player/player.tscn" id="2_nybpm"]
@@ -9,6 +9,14 @@
 [ext_resource type="PackedScene" uid="uid://bpd27sxvihdir" path="res://scenes/carrot.tscn" id="5_kg4pj"]
 [ext_resource type="Script" uid="uid://cspholji4mi83" path="res://scripts/line_test.gd" id="6_yxdlq"]
 [ext_resource type="Script" uid="uid://i38x2psyicys" path="res://scripts/loop_component.gd" id="7_o8nx4"]
+[ext_resource type="PackedScene" uid="uid://deb8tpit7etv4" path="res://scenes/moving_platform.tscn" id="8_kg4pj"]
+[ext_resource type="Script" uid="uid://dhn2r3nytwwvo" path="res://scripts/moving_platform.gd" id="9_yxdlq"]
+
+[sub_resource type="Curve2D" id="Curve2D_o8nx4"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, -192, 0, 0, 0, 0, 150, -192)
+}
+point_count = 2
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ydt7i")
@@ -35,6 +43,18 @@ script = ExtResource("6_yxdlq")
 
 [node name="LoopComponent" type="Node" parent="Level/Line2D"]
 script = ExtResource("7_o8nx4")
+
+[node name="Path2D" type="Path2D" parent="Level"]
+position = Vector2(50, 0)
+curve = SubResource("Curve2D_o8nx4")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Level/Path2D"]
+position = Vector2(76.800446, -192)
+progress = 76.8
+loop = false
+
+[node name="Moving Platform" parent="Level/Path2D/PathFollow2D" instance=ExtResource("8_kg4pj")]
+script = ExtResource("9_yxdlq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
