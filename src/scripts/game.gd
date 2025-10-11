@@ -16,7 +16,6 @@ signal player_entered_previous_loop
 ### GLOBAL VARIABLES
 # SCORES
 var score: int
-var highscore: int
 
 # Current loop the player is in
 var current_loop: int
@@ -32,7 +31,8 @@ func death():
 	# stop player movement and display death sprite
 	$"CanvasLayer/DeathScreen/Menu&title/ScoreText".text = "...BUT YOU COLLECTED " + str(score) + " CARROTS BEFORE YOU DID. TRY AGAIN?"
 	$CanvasLayer/DeathScreen.visible = true
-
+	if score > Global.highscore:
+		Global.highscore= score
 
 # NOTE: INCREASE PLAYER STATS ON COMPLETION OF LOOP
 func loop(forward: bool):
@@ -98,3 +98,7 @@ func _on_pause_button_pressed():
 
 func _on_death_screen_request_restart() -> void:
 	get_tree().reload_current_scene()
+
+
+func _on_level_carrot_collected() -> void:
+	score+= 1

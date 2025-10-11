@@ -42,3 +42,5 @@ cubic_interp = false
 loop = false
 
 [node name="Hawk" parent="Path Hawk/PathFollow2D" instance=ExtResource("5_ppgk2")]
+
+[connection signal="collected" from="Carrot" to="." method="_on_carrot_collected"]

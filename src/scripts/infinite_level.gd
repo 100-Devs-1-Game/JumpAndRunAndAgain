@@ -2,6 +2,7 @@ class_name InfiniteScrollingLevel
 extends Node2D
 
 signal player_looped(forward: bool)
+signal carrot_collected
 
 @export var player: Player
 
@@ -33,3 +34,7 @@ func _process(_delta: float) -> void:
 	elif player.position.x < prev_tile_map_layer.position.x + tile_map_offset:
 		player.position.x += tile_map_offset
 		player_looped.emit(false)
+
+
+func _on_carrot_collected() -> void:
+	carrot_collected.emit()

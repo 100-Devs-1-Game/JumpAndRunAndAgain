@@ -64,5 +64,7 @@ game = NodePath("../..")
 [node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("5_afj2h")]
 visible = false
 
+[connection signal="carrot_collected" from="Level" to="." method="_on_level_carrot_collected"]
 [connection signal="player_looped" from="Level" to="." method="loop"]
+[connection signal="collected" from="Level/Carrot" to="Level" method="_on_carrot_collected"]
 [connection signal="change_player_stats" from="CanvasLayer/Debug" to="." method="change_player_stats"]

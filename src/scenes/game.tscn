@@ -76,6 +76,7 @@ texture = SubResource("AnimatedTexture_ssvqc")
 stretch_mode = 5
 
 [connection signal="died" from="Player" to="." method="death"]
+[connection signal="carrot_collected" from="Level" to="." method="_on_level_carrot_collected"]
 [connection signal="player_looped" from="Level" to="." method="loop"]
 [connection signal="change_player_stats" from="CanvasLayer/Debug" to="." method="change_player_stats"]
 [connection signal="request_restart" from="CanvasLayer/DeathScreen" to="." method="_on_death_screen_request_restart"]
