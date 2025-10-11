@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://8ucuo4b50toc"]
+[gd_scene load_steps=10 format=3 uid="uid://8ucuo4b50toc"]
 
 [ext_resource type="Texture2D" uid="uid://cud0wrxfk2hq1" path="res://assets/art/misc/3x12 beartrap 64px.png" id="1_fd4jx"]
 [ext_resource type="Script" uid="uid://c7yjsjj0ctnua" path="res://scripts/bear_trap.gd" id="1_gbrjp"]
 [ext_resource type="Script" uid="uid://ctjgo3gmrdk3f" path="res://scripts/killzone.gd" id="2_gbrjp"]
+[ext_resource type="Script" uid="uid://i38x2psyicys" path="res://scripts/loop_component.gd" id="4_8fn3p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8fn3p"]
 atlas = ExtResource("1_fd4jx")
@@ -54,5 +55,9 @@ metadata/_custom_type_script = "uid://ctjgo3gmrdk3f"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
 position = Vector2(0, 72)
 shape = SubResource("RectangleShape2D_b8isq")
+
+[node name="LoopComponent" type="Node" parent="."]
+script = ExtResource("4_8fn3p")
+metadata/_custom_type_script = "uid://i38x2psyicys"
 
 [connection signal="triggered" from="Killzone" to="." method="_on_killzone_triggered"]
