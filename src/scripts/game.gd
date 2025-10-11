@@ -89,6 +89,10 @@ func _process(_delta: float):
 			print ("menu visible")
 		else: 
 			$CanvasLayer/DeathScreen.visible = false
+			
+			
+	if $CanvasLayer/DeathScreen.visible == true:
+		%PauseButton.visible = false
 
 
 
