@@ -25,6 +25,11 @@ var max_loop: int
 ### GAME FUNCTIONS
 ## COLLISION CONTACT
 
+func _ready() -> void:
+	%PauseButton.show()
+	if OS.is_debug_build():
+		%Debug.show()
+
 # NOTE: SHOW DEATH MENU AND CHANGE SPRITE TO STATIC DEATH ON CONTACT WITH ENEMY/HAZARD
 # TODO: FINISH IMPLEMENTING DEATH SPRITE (TBM)
 func death():

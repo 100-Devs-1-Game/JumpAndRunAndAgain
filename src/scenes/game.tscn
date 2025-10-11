@@ -44,6 +44,8 @@ player = NodePath("../Player")
 process_mode = 3
 
 [node name="Debug" parent="CanvasLayer" node_paths=PackedStringArray("game") instance=ExtResource("4_lbhrr")]
+unique_name_in_owner = true
+visible = false
 game = NodePath("../..")
 
 [node name="DeathScreen" parent="CanvasLayer" node_paths=PackedStringArray("game") instance=ExtResource("5_iywne")]
@@ -51,6 +53,8 @@ visible = false
 game = NodePath("../..")
 
 [node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
 anchors_preset = -1
 anchor_right = 0.08089583
 anchor_bottom = 0.14348148
