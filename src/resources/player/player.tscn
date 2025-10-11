@@ -31,3 +31,4 @@ sprite_frames = ExtResource("2_y8vdq")
 animation = &"idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_bottom = 540
