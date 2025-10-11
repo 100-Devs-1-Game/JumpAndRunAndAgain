@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://x6na3g3bqcf8"]
+[gd_scene load_steps=15 format=4 uid="uid://x6na3g3bqcf8"]
 
 [ext_resource type="Script" uid="uid://o8kqqd2p4eu5" path="res://scripts/game.gd" id="1_ydt7i"]
 [ext_resource type="PackedScene" uid="uid://78b2glth7glk" path="res://resources/player/player.tscn" id="2_nybpm"]
@@ -9,14 +9,24 @@
 [ext_resource type="PackedScene" uid="uid://bpd27sxvihdir" path="res://scenes/carrot.tscn" id="5_kg4pj"]
 [ext_resource type="Script" uid="uid://cspholji4mi83" path="res://scripts/line_test.gd" id="6_yxdlq"]
 [ext_resource type="Script" uid="uid://i38x2psyicys" path="res://scripts/loop_component.gd" id="7_o8nx4"]
-[ext_resource type="PackedScene" uid="uid://deb8tpit7etv4" path="res://scenes/moving_platform.tscn" id="8_kg4pj"]
-[ext_resource type="Script" uid="uid://dhn2r3nytwwvo" path="res://scripts/moving_platform.gd" id="9_yxdlq"]
+[ext_resource type="Texture2D" uid="uid://qs5es43aroda" path="res://assets/art/ui elements/pausebutton1.png" id="10_yxdlq"]
+[ext_resource type="Texture2D" uid="uid://8mnu55fywl76" path="res://assets/art/ui elements/pausebutton2.png" id="11_o8nx4"]
+[ext_resource type="Texture2D" uid="uid://hygoq7wchjyf" path="res://assets/art/ui elements/pausebutton3.png" id="12_2mfrk"]
 
 [sub_resource type="Curve2D" id="Curve2D_o8nx4"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 0, -192, 0, 0, 0, 0, 150, -192)
 }
 point_count = 2
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_mpa1w"]
+frames = 3
+frame_0/texture = ExtResource("10_yxdlq")
+frame_0/duration = 0.2
+frame_1/texture = ExtResource("11_o8nx4")
+frame_1/duration = 0.2
+frame_2/texture = ExtResource("12_2mfrk")
+frame_2/duration = 0.2
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ydt7i")
@@ -53,16 +63,26 @@ position = Vector2(76.800446, -192)
 progress = 76.8
 loop = false
 
-[node name="Moving Platform" parent="Level/Path2D/PathFollow2D" instance=ExtResource("8_kg4pj")]
-script = ExtResource("9_yxdlq")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Debug" parent="CanvasLayer" node_paths=PackedStringArray("game") instance=ExtResource("4_gp5yl")]
+unique_name_in_owner = true
 game = NodePath("../..")
 
 [node name="DeathScreen" parent="CanvasLayer" instance=ExtResource("5_afj2h")]
 visible = false
+
+[node name="PauseButton" type="TextureButton" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = -1
+anchor_right = 0.08089583
+anchor_bottom = 0.14348148
+offset_right = -0.3200035
+offset_bottom = 0.040000916
+texture_normal = SubResource("AnimatedTexture_mpa1w")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
 
 [connection signal="carrot_collected" from="Level" to="." method="_on_level_carrot_collected"]
 [connection signal="player_looped" from="Level" to="." method="loop"]
