@@ -80,70 +80,68 @@ offset_right = 2020.0
 offset_bottom = 10.0
 rotation = -4.712389
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 visible = false
-layout_mode = 0
-offset_right = 1920.0
-offset_bottom = 1080.0
+layout_mode = 2
 color = Color(1, 0.7058824, 1, 0.5294118)
 
-[node name="AnimationLabel" type="Label" parent="."]
+[node name="AnimationLabel" type="Label" parent="MarginContainer"]
 visible = false
-layout_mode = 0
-offset_left = 1232.0
-offset_top = 1007.99994
-offset_right = 1548.0
-offset_bottom = 1031.0
-scale = Vector2(2.0656164, 2.0656164)
+layout_mode = 2
 text = "currently playing \"movement\" animation"
 
-[node name="ScoreLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 15.999996
-offset_top = 16.0
-offset_right = 108.95053
-offset_bottom = 39.00006
-scale = Vector2(2.0656164, 2.0656164)
+[node name="HBoxContainer Score" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 40
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer Score"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "SCORE = 0"
 
-[node name="HighscoreLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 239.99994
-offset_top = 15.999985
-offset_right = 371.67975
-offset_bottom = 39.000046
-scale = Vector2(2.0656164, 2.0656164)
+[node name="HighscoreLabel" type="Label" parent="MarginContainer/HBoxContainer Score"]
+unique_name_in_owner = true
+layout_mode = 2
 text = "HIGHSCORE = 0"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -40.0
-offset_right = 388.0
-grow_vertical = 0
+[node name="HBoxContainer Stats" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
 theme_override_constants/separation = 15
 
-[node name="PlayerSpeedLabel" type="Label" parent="HBoxContainer"]
+[node name="PlayerSpeedLabel" type="Label" parent="MarginContainer/HBoxContainer Stats"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "PLAYER SPEED= ?"
 
-[node name="PlayerJumpHeightLabel" type="Label" parent="HBoxContainer"]
+[node name="PlayerJumpHeightLabel" type="Label" parent="MarginContainer/HBoxContainer Stats"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "PLAYER JUMP HEIGHT= ?"
 
-[node name="IncreaseButton" type="Button" parent="HBoxContainer"]
+[node name="IncreaseButton" type="Button" parent="MarginContainer/HBoxContainer Stats"]
 layout_mode = 2
 focus_mode = 0
 text = "INCREASE"
 
-[node name="DecreaseButton" type="Button" parent="HBoxContainer"]
+[node name="DecreaseButton" type="Button" parent="MarginContainer/HBoxContainer Stats"]
 layout_mode = 2
 focus_mode = 0
 text = "DECREASE"
 
-[connection signal="pressed" from="HBoxContainer/IncreaseButton" to="." method="_on_increase_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/DecreaseButton" to="." method="_on_decrease_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer Stats/IncreaseButton" to="." method="_on_increase_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer Stats/DecreaseButton" to="." method="_on_decrease_button_pressed"]

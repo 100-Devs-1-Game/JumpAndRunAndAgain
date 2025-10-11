@@ -15,8 +15,8 @@ func _process(_delta: float):
 	%PlayerSpeedLabel.text = "PLAYER SPEED: %d" % int(game.player.maxSpeedLock)
 	%PlayerJumpHeightLabel.text = "PLAYER JUMP HEIGHT: %d" % game.player.jumpMagnitude
 	#$AnimationLabel.text = "currently playing " + game.currentanim + "animation"
-	$ScoreLabel.text = "SCORE = " + str(game.score)
-	$HighscoreLabel.text = "HIGHSCORE = " + str(Global.highscore)
+	%ScoreLabel.text = "SCORE = " + str(game.score)
+	%HighscoreLabel.text = "HIGHSCORE = " + str(Global.highscore)
 
 
 func _on_increase_button_pressed():
