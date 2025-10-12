@@ -26,8 +26,7 @@ func kill():
 	if god_mode:
 		return
 
-	anim.play("idle")
-	rotate(-PI / 2)
+	anim.play("die")
 	set_process(false)
 	set_physics_process(false)
 	collision_layer= 0

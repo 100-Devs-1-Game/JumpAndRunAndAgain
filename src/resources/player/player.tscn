@@ -27,7 +27,7 @@ shape = SubResource("CapsuleShape2D_sh265")
 position = Vector2(0, -12)
 scale = Vector2(0.060000002, 0.059999995)
 sprite_frames = ExtResource("2_y8vdq")
-animation = &"idle"
+animation = &"die"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 limit_bottom = 700

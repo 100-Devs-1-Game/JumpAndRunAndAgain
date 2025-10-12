@@ -1,5 +1,6 @@
-[gd_resource type="SpriteFrames" load_steps=15 format=3 uid="uid://brafpis3h2qfy"]
+[gd_resource type="SpriteFrames" load_steps=16 format=3 uid="uid://brafpis3h2qfy"]
 
+[ext_resource type="Texture2D" uid="uid://fesedtka3dvk" path="res://assets/art/sprites/die/die.png" id="1_dog12"]
 [ext_resource type="Texture2D" uid="uid://b1tuem6sk056g" path="res://assets/art/sprites/idle/0001.png" id="1_l8mxi"]
 [ext_resource type="Texture2D" uid="uid://dleioxd3ef0wg" path="res://assets/art/sprites/jump/0001.png" id="2_dog12"]
 [ext_resource type="Texture2D" uid="uid://bcewkyfo777ty" path="res://assets/art/sprites/jump/0002.png" id="3_5cc3a"]
@@ -17,6 +18,14 @@
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dog12")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_l8mxi")
