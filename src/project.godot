@@ -27,6 +27,10 @@ window/size/window_width_override=1152
 window/size/window_height_override=648
 window/stretch/mode="viewport"
 
+[gui]
+
+theme/custom_font="uid://bf75cvn655wxu"
+
 [input]
 
 DebugPreview={
@@ -78,3 +82,4 @@ MenuPreview={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
