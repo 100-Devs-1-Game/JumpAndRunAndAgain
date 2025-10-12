@@ -1,16 +1,20 @@
-[gd_scene load_steps=3 format=4 uid="uid://deb8tpit7etv4"]
+[gd_scene load_steps=4 format=3 uid="uid://deb8tpit7etv4"]
 
-[ext_resource type="TileSet" uid="uid://e53pm6bh0y3x" path="res://resources/level/black_white_tile_set_no_collisions.tres" id="1_1tdcd"]
+[ext_resource type="Script" uid="uid://dhn2r3nytwwvo" path="res://scripts/moving_platform.gd" id="1_ms375"]
 [ext_resource type="Script" uid="uid://i38x2psyicys" path="res://scripts/loop_component.gd" id="2_mb26n"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ms375"]
+size = Vector2(128, 48)
+
 [node name="Moving Platform" type="AnimatableBody2D"]
+script = ExtResource("1_ms375")
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
-tile_map_data = PackedByteArray("AAD+////AQACAAEAAAD/////AQACAAEAAAAAAP//AQACAAEAAAABAP//AQACAAEAAAACAP//AQAEAAEAAAACAAAAAQAEAAQAAAABAAAAAQACAAQAAAAAAAAAAQACAAQAAAD//wAAAQACAAQAAAD+/wAAAQACAAQAAAD9////AQABAAEAAAD9/wAAAQABAAQAAAA=")
-tile_set = ExtResource("1_1tdcd")
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.68307734, 0.6830774, 0.68307734, 1)
+polygon = PackedVector2Array(-64, -24, 64, -24, 64, 24, -64, 24)
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(-192, 0, -128, -64, 128, -64, 192, 0, 128, 64, -128, 64)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ms375")
 
 [node name="LoopComponent" type="Node" parent="."]
 script = ExtResource("2_mb26n")
