@@ -66,11 +66,12 @@ func late_ready():
 func _process(_delta: float) -> void:
 	# Sync transforms, if necessary
 	if not obj.global_transform.is_equal_approx(prev_transform):
-		var delta_pos: Vector2 = obj.global_transform.origin - prev_transform.origin
+		var left: bool= true
 		for instance in instances:
-			instance.global_position += delta_pos
+			instance.global_position = obj.global_position + Vector2( level.tile_map_offset * ( -1 if left else 1 ), 0) 
 			instance.global_rotation = obj.global_rotation
 			instance.global_scale = obj.global_scale
+			left= false
 			
 		prev_transform = obj.global_transform
 
