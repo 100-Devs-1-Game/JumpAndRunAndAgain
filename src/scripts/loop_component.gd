@@ -30,7 +30,7 @@ func _ready() -> void:
 		else:
 			lookup_node = lookup_node.get_parent()
 
-	prev_transform = obj.transform
+	prev_transform = obj.global_transform
 
 	late_ready.call_deferred()
 
