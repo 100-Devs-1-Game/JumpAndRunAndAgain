@@ -29,6 +29,7 @@ func _ready() -> void:
 	%PauseButton.show()
 	if OS.is_debug_build():
 		%Debug.show()
+		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
 
 # NOTE: SHOW DEATH MENU AND CHANGE SPRITE TO STATIC DEATH ON CONTACT WITH ENEMY/HAZARD
 # TODO: FINISH IMPLEMENTING DEATH SPRITE (TBM)
