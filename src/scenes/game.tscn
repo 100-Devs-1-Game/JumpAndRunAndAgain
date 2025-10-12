@@ -63,6 +63,7 @@ anchor_right = 0.08089583
 anchor_bottom = 0.14348148
 offset_right = -0.3200035
 offset_bottom = 0.040000916
+focus_mode = 0
 texture_normal = SubResource("AnimatedTexture_rysoc")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
