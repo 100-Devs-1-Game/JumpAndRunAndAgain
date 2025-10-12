@@ -1,6 +1,8 @@
 class_name LoopComponent
 extends Node
 
+signal initialized
+
 @export var left_overrides: Dictionary
 @export var right_overrides: Dictionary
 
@@ -62,6 +64,9 @@ func late_ready():
 		instance.process_physics_priority = 1
 		apply_overrides(instance, override_dict)
 		connect_signals(instance)
+
+	initialized.emit()
+
 
 func _process(_delta: float) -> void:
 	# Sync transforms, if necessary
