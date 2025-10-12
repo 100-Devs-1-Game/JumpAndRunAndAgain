@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://85t61m74jrs7"]
+
+[ext_resource type="Script" uid="uid://cdv7evri74afm" path="res://scripts/arrow.gd" id="1_23jat"]
+[ext_resource type="Script" uid="uid://i38x2psyicys" path="res://scripts/loop_component.gd" id="1_umosx"]
+
+[node name="Arrow" type="Polygon2D"]
+polygon = PackedVector2Array(0, 448, 64, 448, 64, 424, 96, 456, 64, 488, 64, 464, 0, 464)
+script = ExtResource("1_23jat")
+
+[node name="LoopComponent" type="Node" parent="."]
+script = ExtResource("1_umosx")
+metadata/_custom_type_script = "uid://i38x2psyicys"
