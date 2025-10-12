@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://42an1dcwl74y"]
+[gd_scene load_steps=15 format=3 uid="uid://42an1dcwl74y"]
 
 [ext_resource type="Script" uid="uid://o8kqqd2p4eu5" path="res://scripts/game.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b7rryvumifoxi" path="res://scenes/level.tscn" id="3_ryrav"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://dc6pj10u3xk84" path="res://assets/art/ui elements/pausedtext1.png" id="9_trtic"]
 [ext_resource type="Texture2D" uid="uid://boamlbvpxpld" path="res://assets/art/ui elements/pausedtext2.png" id="10_ir15t"]
 [ext_resource type="Texture2D" uid="uid://bdvk0gumo5te0" path="res://assets/art/ui elements/pausedtext3.png" id="11_ca42v"]
+[ext_resource type="AudioStream" uid="uid://cm06yk0hpinpp" path="res://assets/music/bunny song.ogg" id="12_dinhu"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_rysoc"]
 frames = 3
@@ -33,7 +34,6 @@ frame_2/duration = 0.2
 [node name="Game" type="Node"]
 process_mode = 1
 script = ExtResource("1_7jktm")
-jump_increase_per_iteration = 0.1
 
 [node name="Player" parent="." instance=ExtResource("4_eow3j")]
 position = Vector2(59, 36)
@@ -80,6 +80,11 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("AnimatedTexture_ssvqc")
 stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_dinhu")
+volume_db = -5.136
+autoplay = true
 
 [connection signal="died" from="Player" to="." method="death"]
 [connection signal="carrot_collected" from="Level" to="." method="_on_level_carrot_collected"]
