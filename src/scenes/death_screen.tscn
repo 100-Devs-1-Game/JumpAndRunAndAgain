@@ -94,6 +94,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.13333334, 0.12941177, 0.12156863, 0.8627451)
@@ -176,14 +178,13 @@ anchor_left = 0.057291668
 anchor_top = 0.2037037
 anchor_right = 0.94270825
 anchor_bottom = 0.84953684
-offset_left = 687.0
-offset_top = 215.0
-offset_right = -687.0
-offset_bottom = -215.0
+offset_left = 549.89685
+offset_top = 102.499756
+offset_right = -549.89685
+offset_bottom = -102.499756
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.9372549)
-metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Credits"]
 layout_mode = 1
@@ -192,10 +193,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 24
 alignment = 1
 
 [node name="Label" type="Label" parent="Credits/VBoxContainer2"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 26
 text = "CREDITS"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -213,12 +216,20 @@ vertical_alignment = 1
 clip_contents = false
 custom_minimum_size = Vector2(0, 165.29)
 layout_mode = 2
-text = "[NAME] - ROLE
-[NAME] - ROLE
-[NAME] - ROLE
-[NAME] - ROLE
+bbcode_enabled = true
+text = "[u]Lead Game Designer[/u]
+Codimon[br]
+[u]2D Artist[/u]
+Astenra
+CRYPTCRATE[br]
+[u]Composer[/u]
+frog[br]
+[u]Programmer[/u]
+CRYPTCRATE
+Codimon
+Maniform
 
-Game #_ of the 33 Games in 100 Days project
+Game #10 of the 33 Games in 100 Days project
 by the 100 Devs community"
 fit_content = true
 scroll_active = false
