@@ -111,11 +111,13 @@ theme_override_constants/separation = 40
 [node name="ScoreLabel" type="Label" parent="MarginContainer/HBoxContainer Score"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "SCORE = 0"
 
 [node name="HighscoreLabel" type="Label" parent="MarginContainer/HBoxContainer Score"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "HIGHSCORE = 0"
 
 [node name="HBoxContainer Stats" type="HBoxContainer" parent="MarginContainer"]
@@ -126,21 +128,25 @@ theme_override_constants/separation = 15
 [node name="PlayerSpeedLabel" type="Label" parent="MarginContainer/HBoxContainer Stats"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "PLAYER SPEED= ?"
 
 [node name="PlayerJumpHeightLabel" type="Label" parent="MarginContainer/HBoxContainer Stats"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "PLAYER JUMP HEIGHT= ?"
 
 [node name="IncreaseButton" type="Button" parent="MarginContainer/HBoxContainer Stats"]
 layout_mode = 2
 focus_mode = 0
+theme_override_font_sizes/font_size = 24
 text = "INCREASE"
 
 [node name="DecreaseButton" type="Button" parent="MarginContainer/HBoxContainer Stats"]
 layout_mode = 2
 focus_mode = 0
+theme_override_font_sizes/font_size = 24
 text = "DECREASE"
 
 [connection signal="pressed" from="MarginContainer/HBoxContainer Stats/IncreaseButton" to="." method="_on_increase_button_pressed"]
