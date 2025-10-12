@@ -35,7 +35,7 @@ class_name PlatformerController2D
 ##The strength at which your character will be pulled to the ground.
 @export_range(0, 100) var gravityScale: float = 20.0
 ##The fastest your player can fall
-@export_range(0, 1000) var terminalVelocity: float = 500.0
+@export_range(0, 10000) var terminalVelocity: float = 500.0
 ##Your player will move this amount faster when falling providing a less floaty jump curve.
 @export_range(0.5, 3) var descendingGravityFactor: float = 1.3
 ##Enabling this toggle makes it so that when the player releases the jump key while still ascending, their vertical velocity will cut in half, providing variable jump height.
