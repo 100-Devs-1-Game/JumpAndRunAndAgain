@@ -54,9 +54,11 @@ func loop(forward: bool):
 
 func change_player_stats(increase: bool= true):
 	if increase:
+		player.maxSpeed += speed_increase_per_iteration
 		player.maxSpeedLock += speed_increase_per_iteration
 		player.jumpMagnitude += jump_increase_per_iteration
 	else:
+		player.maxSpeed -= speed_increase_per_iteration
 		player.maxSpeedLock -= speed_increase_per_iteration
 		player.jumpMagnitude -= jump_increase_per_iteration
 
