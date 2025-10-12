@@ -9,7 +9,7 @@ signal player_entered_previous_loop
 ## Flat value for increasing the players speed for each iteration
 @export var speed_increase_per_iteration: float = 20
 ## Flat value for increasing the players jump height for each iteration 
-@export var jump_increase_per_iteration: float = 20
+@export var jump_increase_per_iteration: float = .1
 
 @onready var player: Player = $Player
 
@@ -55,13 +55,12 @@ func loop(forward: bool):
 func change_player_stats(increase: bool= true):
 	if increase:
 		player.maxSpeed += speed_increase_per_iteration
-		player.maxSpeedLock += speed_increase_per_iteration
-		player.jumpMagnitude += jump_increase_per_iteration
+		player.jumpHeight += jump_increase_per_iteration
 	else:
 		player.maxSpeed -= speed_increase_per_iteration
-		player.maxSpeedLock -= speed_increase_per_iteration
-		player.jumpMagnitude -= jump_increase_per_iteration
+		player.jumpHeight -= jump_increase_per_iteration
 
+	player._updateData()
 
 
 # NOTE: UPDATES EVERY SECOND(?)
