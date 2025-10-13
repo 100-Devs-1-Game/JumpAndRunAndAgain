@@ -95,6 +95,7 @@ class_name PlatformerController2D
 @export_category("Animations (Check Box if has animation)")
 ##Animations must be named "run" all lowercase as the check box says
 @export var run: bool
+@export var run_animation_speed_scale: float = 1.0
 ##Animations must be named "jump" all lowercase as the check box says
 @export var jump: bool
 ##Animations must be named "idle" all lowercase as the check box says
@@ -267,7 +268,7 @@ func _process(_delta):
 	#run
 	if run and idle and !dashing and !crouching:
 		if abs(velocity.x) > 0.1 and is_on_floor() and !is_on_wall():
-			anim.speed_scale = abs(velocity.x / 150)
+			anim.speed_scale = abs(velocity.x * run_animation_speed_scale / 100.0)
 			anim.play("run")
 		elif abs(velocity.x) < 0.1 and is_on_floor():
 			anim.speed_scale = 1
