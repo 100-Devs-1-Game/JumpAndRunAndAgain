@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpd27sxvihdir"]
+[gd_scene load_steps=9 format=3 uid="uid://bpd27sxvihdir"]
 
 [ext_resource type="Script" uid="uid://duu7boep62goa" path="res://scripts/carrot.gd" id="1_mb1r7"]
 [ext_resource type="Script" uid="uid://i38x2psyicys" path="res://scripts/loop_component.gd" id="2_x0dx6"]
 [ext_resource type="Texture2D" uid="uid://blbu8uapol4f4" path="res://assets/art/pickups/carrot.png" id="3_o2vgq"]
+[ext_resource type="AudioStream" uid="uid://cbktcp50gg1qa" path="res://external assets/sfx/bite.ogg" id="4_x0dx6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mx8sn"]
 atlas = ExtResource("3_o2vgq")
@@ -52,5 +53,9 @@ sprite_frames = SubResource("SpriteFrames_2r41h")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_ppgk2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_x0dx6")
+bus = &"Sfx"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready() -> void:
@@ -12,6 +13,7 @@ func _ready() -> void:
 
 func on_new_loop():
 	animated_sprite.play("default")
+	audio_player.play()
 	await blink()
 	animated_sprite.stop()
 

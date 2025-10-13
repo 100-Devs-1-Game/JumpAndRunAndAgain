@@ -7,6 +7,7 @@ signal collected
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var loop_component: LoopComponent = $LoopComponent
+@onready var audio_player: AudioStreamPlayer = $AudioStreamPlayer
 
 var can_collect := true
 
@@ -41,6 +42,7 @@ func _on_body_entered(_body: Node2D) -> void:
 		
 	can_collect = false
 	animated_sprite.play("empty")
+	audio_player.play()
 	collected.emit()
 	loop_component.set_property(self, "modulate", greyed_out)
 	await get_tree().create_timer(respawn_rate).timeout

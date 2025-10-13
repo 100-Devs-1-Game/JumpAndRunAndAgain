@@ -9,6 +9,9 @@ signal died
 @export var max_fall_depth: float= 900.0
 
 @onready var camera: Camera2D = $Camera2D
+@onready var audio_player_running: AudioStreamPlayer = $"AudioStreamPlayer Running"
+@onready var audio_player_death: AudioStreamPlayer = $"AudioStreamPlayer Death"
+
 
 
 func _ready():
@@ -22,11 +25,21 @@ func _physics_process(delta):
 	if position.y > max_fall_depth:
 		kill()
 
+	if is_zero_approx(velocity.length()) or not is_on_floor():
+		audio_player_running.stop()
+	else:
+		if not audio_player_running.playing:
+			audio_player_running.pitch_scale= maxSpeed / 400.0
+			audio_player_running.play()
+
+
 func kill():
 	if god_mode:
 		return
 
 	anim.play("die")
+	audio_player_running.stop()
+	audio_player_death.play()
 	set_process(false)
 	set_physics_process(false)
 	collision_layer= 0

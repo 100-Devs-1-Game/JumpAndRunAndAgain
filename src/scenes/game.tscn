@@ -117,7 +117,6 @@ metadata/_edit_use_anchors_ = true
 [node name="MuteButton" type="TextureButton" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
-anchors_preset = -1
 offset_left = 200.0
 offset_right = 64.0
 offset_bottom = 64.0
@@ -129,7 +128,6 @@ metadata/_edit_use_anchors_ = true
 [node name="UnmuteButton" type="TextureButton" parent="CanvasLayer"]
 unique_name_in_owner = true
 visible = false
-anchors_preset = -1
 offset_left = 200.0
 offset_right = 64.0
 offset_bottom = 64.0
