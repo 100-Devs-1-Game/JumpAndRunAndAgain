@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://42an1dcwl74y"]
+[gd_scene load_steps=27 format=3 uid="uid://42an1dcwl74y"]
 
 [ext_resource type="Script" uid="uid://o8kqqd2p4eu5" path="res://scripts/game.gd" id="1_7jktm"]
 [ext_resource type="PackedScene" uid="uid://b7rryvumifoxi" path="res://scenes/level.tscn" id="3_ryrav"]
@@ -8,10 +8,19 @@
 [ext_resource type="Texture2D" uid="uid://qs5es43aroda" path="res://assets/art/ui elements/pausebutton1.png" id="6_kvpfn"]
 [ext_resource type="Texture2D" uid="uid://8mnu55fywl76" path="res://assets/art/ui elements/pausebutton2.png" id="7_dinhu"]
 [ext_resource type="Texture2D" uid="uid://hygoq7wchjyf" path="res://assets/art/ui elements/pausebutton3.png" id="8_kvuet"]
+[ext_resource type="Texture2D" uid="uid://b8fnhndkrynb5" path="res://assets/art/ui elements/play1.png" id="9_ir15t"]
 [ext_resource type="Texture2D" uid="uid://dc6pj10u3xk84" path="res://assets/art/ui elements/pausedtext1.png" id="9_trtic"]
+[ext_resource type="Texture2D" uid="uid://ku3xiemktsq1" path="res://assets/art/ui elements/play2.png" id="10_ca42v"]
 [ext_resource type="Texture2D" uid="uid://boamlbvpxpld" path="res://assets/art/ui elements/pausedtext2.png" id="10_ir15t"]
 [ext_resource type="Texture2D" uid="uid://bdvk0gumo5te0" path="res://assets/art/ui elements/pausedtext3.png" id="11_ca42v"]
+[ext_resource type="Texture2D" uid="uid://p5mq6r17pa8k" path="res://assets/art/ui elements/play3.png" id="11_rysoc"]
+[ext_resource type="Texture2D" uid="uid://cdo4i65rbxk7i" path="res://assets/art/ui elements/mute1.png" id="12_5newe"]
 [ext_resource type="AudioStream" uid="uid://cm06yk0hpinpp" path="res://assets/music/bunny song.ogg" id="12_dinhu"]
+[ext_resource type="Texture2D" uid="uid://baag5s13nphrp" path="res://assets/art/ui elements/mute2.png" id="13_37s47"]
+[ext_resource type="Texture2D" uid="uid://c8yswegx3q7q0" path="res://assets/art/ui elements/mute3.png" id="14_bt5mj"]
+[ext_resource type="Texture2D" uid="uid://cp053ntd82227" path="res://assets/art/ui elements/sound1.png" id="15_e1j6l"]
+[ext_resource type="Texture2D" uid="uid://bp6otrdivyv7e" path="res://assets/art/ui elements/sound2.png" id="16_pl11u"]
+[ext_resource type="Texture2D" uid="uid://jbopxek2etf7" path="res://assets/art/ui elements/sound3.png" id="17_bhx41"]
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_rysoc"]
 frames = 3
@@ -21,6 +30,30 @@ frame_1/texture = ExtResource("7_dinhu")
 frame_1/duration = 0.2
 frame_2/texture = ExtResource("8_kvuet")
 frame_2/duration = 0.2
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_264po"]
+frames = 3
+frame_0/texture = ExtResource("9_ir15t")
+frame_1/texture = ExtResource("10_ca42v")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("11_rysoc")
+frame_2/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_qnb83"]
+frames = 3
+frame_0/texture = ExtResource("12_5newe")
+frame_1/texture = ExtResource("13_37s47")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("14_bt5mj")
+frame_2/duration = 1.0
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_sww3w"]
+frames = 3
+frame_0/texture = ExtResource("15_e1j6l")
+frame_1/texture = ExtResource("16_pl11u")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("17_bhx41")
+frame_2/duration = 1.0
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_ssvqc"]
 frames = 3
@@ -68,6 +101,43 @@ texture_normal = SubResource("AnimatedTexture_rysoc")
 stretch_mode = 5
 metadata/_edit_use_anchors_ = true
 
+[node name="ResumeButton" type="TextureButton" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = -1
+anchor_right = 0.08089583
+anchor_bottom = 0.14348148
+offset_right = -0.3200035
+offset_bottom = 0.040000916
+focus_mode = 0
+texture_normal = SubResource("AnimatedTexture_264po")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="MuteButton" type="TextureButton" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = -1
+offset_left = 200.0
+offset_right = 64.0
+offset_bottom = 64.0
+focus_mode = 0
+texture_normal = SubResource("AnimatedTexture_qnb83")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="UnmuteButton" type="TextureButton" parent="CanvasLayer"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = -1
+offset_left = 200.0
+offset_right = 64.0
+offset_bottom = 64.0
+focus_mode = 0
+texture_normal = SubResource("AnimatedTexture_sww3w")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
 [node name="PausedText" type="TextureRect" parent="CanvasLayer"]
 visible = false
 anchors_preset = 8
@@ -95,3 +165,6 @@ autoplay = true
 [connection signal="change_player_stats" from="CanvasLayer/Debug" to="." method="change_player_stats"]
 [connection signal="request_restart" from="CanvasLayer/DeathScreen" to="." method="_on_death_screen_request_restart"]
 [connection signal="pressed" from="CanvasLayer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/MuteButton" to="." method="_on_mute_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UnmuteButton" to="." method="_on_unmute_button_pressed"]

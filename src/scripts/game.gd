@@ -27,6 +27,8 @@ var max_loop: int
 
 func _ready() -> void:
 	%PauseButton.show()
+	%MuteButton.show()
+	
 	if OS.is_debug_build():
 		%Debug.show()
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
@@ -111,7 +113,6 @@ func _on_resume_button_pressed() -> void:
 	%ResumeButton.hide()
 	%PauseButton.show()
 	$CanvasLayer/PausedText.visible = false
-	
 
 
 func _on_death_screen_request_restart() -> void:
@@ -120,3 +121,15 @@ func _on_death_screen_request_restart() -> void:
 
 func _on_level_carrot_collected() -> void:
 	score+= 1
+
+
+func _on_mute_button_pressed() -> void:
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), true)
+	%MuteButton.hide()
+	%UnmuteButton.show()
+
+
+func _on_unmute_button_pressed() -> void:
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), false)
+	%MuteButton.show()
+	%UnmuteButton.hide()
