@@ -16,6 +16,7 @@ PlayerCollider = NodePath("CollisionShape2D")
 maxSpeed = 400.0
 gravityScale = 40.0
 run = true
+run_animation_speed_scale = 0.25
 jump = true
 idle = true
 walk = true
