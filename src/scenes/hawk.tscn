@@ -59,7 +59,6 @@ animations = [{
 size = Vector2(64, 64)
 
 [node name="Hawk" type="CharacterBody2D"]
-rotation = 0.24497867
 scale = Vector2(1.0000001, 1.0000001)
 collision_layer = 4
 script = ExtResource("1_kr1b3")
