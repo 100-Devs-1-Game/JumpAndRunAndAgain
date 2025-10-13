@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://crrmsn1syrux2"]
+[gd_scene load_steps=22 format=3 uid="uid://crrmsn1syrux2"]
 
 [ext_resource type="Script" uid="uid://cke7rm1pytcnu" path="res://scripts/menu.gd" id="1_vcvlw"]
 [ext_resource type="Texture2D" uid="uid://drlw07pc0tb4x" path="res://assets/art/ui elements/title1.png" id="1_wfw3d"]
@@ -70,6 +70,9 @@ frame_1/texture = ExtResource("11_e2qdh")
 frame_1/duration = 0.2
 frame_2/texture = ExtResource("12_0rjdl")
 frame_2/duration = 0.2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogo5k"]
+bg_color = Color(0, 0, 0, 0.9372549)
 
 [sub_resource type="AnimatedTexture" id="AnimatedTexture_6koal"]
 frames = 3
@@ -170,40 +173,52 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "CREDITS"
 
-[node name="Credits" type="ColorRect" parent="."]
+[node name="Credits" type="PanelContainer" parent="."]
 visible = false
+custom_minimum_size = Vector2(800, 0)
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.057291668
-anchor_top = 0.2037037
-anchor_right = 0.94270825
-anchor_bottom = 0.84953684
-offset_left = 549.89685
-offset_top = 102.499756
-offset_right = -549.89685
-offset_bottom = -102.499756
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.00006
+offset_top = -448.0
+offset_right = 400.00006
+offset_bottom = 448.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.9372549)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ogo5k")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Credits"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="TextureButton" type="TextureButton" parent="Credits"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = SubResource("AnimatedTexture_6koal")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Credits"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Credits/MarginContainer"]
+layout_mode = 2
 theme_override_constants/separation = 24
 alignment = 1
 
-[node name="Label" type="Label" parent="Credits/VBoxContainer2"]
+[node name="Label" type="Label" parent="Credits/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 40
 text = "CREDITS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Credits/VBoxContainer2"]
+[node name="RichTextLabel" type="RichTextLabel" parent="Credits/MarginContainer/VBoxContainer2"]
 visible = false
 clip_contents = false
 custom_minimum_size = Vector2(550, 380.475)
@@ -212,10 +227,15 @@ text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis consequat,
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Credits/VBoxContainer2"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="Credits/MarginContainer/VBoxContainer2"]
 clip_contents = false
 custom_minimum_size = Vector2(0, 165.29)
 layout_mode = 2
+mouse_filter = 2
+theme_override_constants/line_separation = 20
+theme_override_constants/paragraph_separation = 3
+theme_override_constants/underline_alpha = 80
+theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[u]Lead Game Designer[/u]
 Codimon[br]
@@ -230,25 +250,11 @@ Codimon
 Maniform
 
 Game #10 of the 33 Games in 100 Days project
-by the 100 Devs community"
+by the Godot Game Jam community"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="TextureButton" type="TextureButton" parent="Credits"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.9110429
-anchor_top = -0.016906869
-anchor_right = 1.1260675
-anchor_bottom = 0.24444842
-offset_right = -0.097984314
-offset_bottom = 0.0875206
-scale = Vector2(0.46990722, 0.46990722)
-texture_normal = SubResource("AnimatedTexture_6koal")
-stretch_mode = 5
-metadata/_edit_use_anchors_ = true
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="pressed" from="Menu&title/RetryButtonTextured" to="." method="_on_retry_button_pressed"]
