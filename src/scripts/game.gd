@@ -100,12 +100,18 @@ func _process(_delta: float):
 
 
 func _on_pause_button_pressed():
-	if $CanvasLayer/PausedText.visible == false:
-		$CanvasLayer/PausedText.visible = true
-		get_tree().paused = true
-	else: 
-		$CanvasLayer/PausedText.visible = false
-		get_tree().paused = false
+	$CanvasLayer/PausedText.visible = true
+	%ResumeButton.show()
+	%PauseButton.hide()
+	get_tree().paused = true
+
+
+func _on_resume_button_pressed() -> void:
+	get_tree().paused = false
+	%ResumeButton.hide()
+	%PauseButton.show()
+	$CanvasLayer/PausedText.visible = false
+	
 
 
 func _on_death_screen_request_restart() -> void:
